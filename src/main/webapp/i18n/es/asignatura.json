@@ -1,0 +1,41 @@
+{
+  "gesconApp": {
+    "asignatura": {
+      "home": {
+        "title": "Asignaturas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Asignatura",
+        "createOrEditLabel": "Crear o editar Asignatura",
+        "notFound": "Ningún Asignaturas encontrado"
+      },
+      "created": "Un nuevo Asignatura ha sido creado con el identificador {{ param }}",
+      "updated": "Un Asignatura ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Asignatura ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Asignatura {{ id }}?"
+      },
+      "detail": {
+        "title": "Asignatura"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "nombre": "Nombre",
+      "nombreCorto": "Nombre Corto",
+      "descripcion": "Descripcion",
+      "documento": "Documento",
+      "horasTeoricas": "Horas Teoricas",
+      "horasPracticas": "Horas Practicas",
+      "numeroClasesTeoria": "Numero Clases Teoria",
+      "numeroClasesPractica": "Numero Clases Practica",
+      "vigencia": "Vigencia",
+      "costo": "Costo",
+      "imagen": "Imagen",
+      "inscripcionDetalle": "Inscripcion Detalle",
+      "categoria": "Categoria",
+      "adicional": "Adicional",
+      "horario": "Horario",
+      "asignaturaRequisito": "Asignatura Requisito",
+      "curso": "Curso"
+    }
+  }
+}

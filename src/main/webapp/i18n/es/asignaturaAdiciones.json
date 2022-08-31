@@ -1,0 +1,29 @@
+{
+  "gesconApp": {
+    "asignaturaAdiciones": {
+      "home": {
+        "title": "Asignatura Adiciones",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Asignatura Adiciones",
+        "createOrEditLabel": "Crear o editar Asignatura Adiciones",
+        "notFound": "Ningún Asignatura Adiciones encontrado"
+      },
+      "created": "Un nuevo Asignatura Adiciones ha sido creado con el identificador {{ param }}",
+      "updated": "Un Asignatura Adiciones ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Asignatura Adiciones ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Asignatura Adiciones {{ id }}?"
+      },
+      "detail": {
+        "title": "Asignatura Adiciones"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "nombre": "Nombre",
+      "nombreCorto": "Nombre Corto",
+      "descripcion": "Descripcion",
+      "imagen": "Imagen",
+      "asignatura": "Asignatura"
+    }
+  }
+}

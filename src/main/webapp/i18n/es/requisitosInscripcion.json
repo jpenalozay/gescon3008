@@ -1,0 +1,32 @@
+{
+  "gesconApp": {
+    "requisitosInscripcion": {
+      "home": {
+        "title": "Requisitos Inscripcions",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Requisitos Inscripcion",
+        "createOrEditLabel": "Crear o editar Requisitos Inscripcion",
+        "notFound": "Ningún Requisitos Inscripcions encontrado"
+      },
+      "created": "Un nuevo Requisitos Inscripcion ha sido creado con el identificador {{ param }}",
+      "updated": "Un Requisitos Inscripcion ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Requisitos Inscripcion ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Requisitos Inscripcion {{ id }}?"
+      },
+      "detail": {
+        "title": "Requisitos Inscripcion"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "obligatorio": "Obligatorio",
+      "nombre": "Nombre",
+      "nombreCorto": "Nombre Corto",
+      "costo": "Costo",
+      "imagen": "Imagen",
+      "tipoRequisito": "Tipo Requisito",
+      "valores": "Valores",
+      "inscripcionAdicional": "Inscripcion Adicional"
+    }
+  }
+}

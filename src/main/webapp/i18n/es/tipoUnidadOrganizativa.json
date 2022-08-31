@@ -1,0 +1,11 @@
+{
+  "gesconApp": {
+    "TipoUnidadOrganizativa": {
+      "null": "",
+      "JUNTA": "JUNTA",
+      "OFICINA": "OFICINA",
+      "DEPARTAMENTO": "DEPARTAMENTO",
+      "AREA": "AREA"
+    }
+  }
+}

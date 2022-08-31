@@ -1,0 +1,377 @@
+<form [formGroup]="formEntity!">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Instructor</label>
+            <select
+              class="form-control form-control-sm"
+              formControlName="instructorId"
+              [(ngModel)]="selInstructorId"
+              (change)="onInstructorSel()"
+            >
+              <option *ngFor="let instructor of cacheInstructores" [ngValue]="instructor.id">
+                {{ getInstructorPersona(instructor.id!)?.apellidoPaterno }}, {{ getInstructorPersona(instructor.id!)?.nombres }}
+              </option>
+            </select>
+          </div>
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Fecha Inicio: </span>
+            </div>
+            <input
+              type="date"
+              class="form-control"
+              ngbDatepicker
+              formControlName="fechaInicio"
+              [(ngModel)]="document.fechaInicio"
+              (change)="doAutomovilStatusCheck()"
+            />
+          </div>
+          <div class="input-group input-group-sm mt-1">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Fecha Fin: </span>
+            </div>
+            <input
+              type="date"
+              class="form-control"
+              ngbDatepicker
+              formControlName="fechaFin"
+              [(ngModel)]="document.fechaFin"
+              (change)="doAutomovilStatusCheck()"
+            />
+          </div>
+          <div class="btn-group btn-group-sm btn-group-toggle d-flex mt-1" role="group" formArrayName="dias">
+            <label class="btn btn-success" ngbButtonLabel *ngFor="let frmDias of formArrayDias.controls; let i = index" [formGroupName]="i">
+              <input
+                type="checkbox"
+                class="btn-check"
+                ngbButton
+                formControlName="dia"
+                [(ngModel)]="selDias[i]"
+                (change)="doAutomovilStatusCheck()"
+              />
+              {{ cacheDias[i].nombreCorto }}
+            </label>
+          </div>
+          <table class="table table-bordered table-sm table-sm mt-2" formArrayName="horarios">
+            <tbody>
+              <tr *ngFor="let horario of cacheHorarios; let i = index" [formGroupName]="i">
+                <td style="width: 1rem">
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="chkHorario{{ i }}"
+                      formControlName="horario"
+                      [(ngModel)]="selHorarios[i]"
+                      (change)="doAutomovilStatusCheck()"
+                    />
+                    <label class="custom-control-label" for="chkHorario{{ i }}"></label>
+                  </div>
+                </td>
+                <td class="text-muted">
+                  <label style="margin-bottom: 0rem" for="chkHorario{{ i }}"> {{ horario.horaInicio }} - {{ horario.horaFin }} </label>
+                </td>
+                <td class="text-muted">
+                  <label style="margin-bottom: 0rem" for="chkHorario{{ i }}">
+                    {{ horario.descripcion }}
+                  </label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="form-group">
+            <label>
+              Autos
+              <span class="badge badge-success">Libre</span>
+              <span class="badge badge-secondary">Disponible</span>
+              <span class="badge badge-danger">Instructor asignado</span>
+            </label>
+            <select class="form-control" size="9" formControlName="automovilId" [(ngModel)]="selAutomovilId" style="overflow-y: auto">
+              <option
+                class="{{ selAutos[i] }}"
+                [disabled]="selAutos[i] != 'text-success'"
+                *ngFor="let auto of cacheAutos; let i = index"
+                [ngValue]="auto.id"
+              >
+                {{ auto.placa }} [{{ auto.caja! }}]
+              </option>
+            </select>
+          </div>
+          <div class="btn-group-vertical">
+            <ng-container *ngFor="let auto of cacheAutos; let i = index">
+              <ng-container *ngIf="isAutomovilStatusCheck() && selAutos[i] != 'text-success'">
+                <button type="button" class="btn btn-danger mt-2" (click)="doAutomovilShowInfo(auto)">
+                  Info - {{ auto.placa }} [{{ auto.caja! }}]
+                </button>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+        <div class="col-md-12 mt-1"></div>
+      </div>
+    </div>
+    <div class="col-md-1 d-flex align-items-center">
+      <div class="btn-block">
+        <button type="button" class="btn btn-primary btn-block" (click)="doSave()">&gt;&gt;</button>
+        <button type="button" class="btn btn-danger btn-block" (click)="doDelete()">&lt;&lt;</button>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-bordered table-sm table-sm">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Rango</th>
+                  <th>Dia</th>
+                  <th>Horario</th>
+                  <th>Excep</th>
+                  <th>Auto</th>
+                  <th>Usuario</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prog of cacheProgramaciones; let i = index">
+                  <td class="align-middle" style="width: 1rem">
+                    <div class="custom-control custom-checkbox">
+                      <input
+                        type="radio"
+                        class="custom-control-input"
+                        id="radProgramacion{{ i }}"
+                        formControlName="selProgram"
+                        [(ngModel)]="selProgramRow"
+                        [value]="i"
+                        (change)="onProgramacionSel()"
+                      />
+                      <label class="custom-control-label" for="radProgramacion{{ i }}"></label>
+                    </div>
+                  </td>
+                  <td>
+                    <label style="margin-bottom: 0rem" for="radProgramacion{{ i }}">
+                      {{ prog.fechaInicio!.format('DD/MM/YYYY') }}<br />
+                      {{ prog.fechaFin!.format('DD/MM/YYYY') }}
+                    </label>
+                  </td>
+                  <td class="align-middle">
+                    <label style="margin-bottom: 0rem" for="radProgramacion{{ i }}">
+                      {{ getDiasFromProgramacion(prog) }}
+                    </label>
+                  </td>
+                  <td class="align-middle">
+                    <label style="margin-bottom: 0rem" for="radProgramacion{{ i }}">
+                      {{ getHorariosFromProgramacion(prog) }}
+                    </label>
+                  </td>
+                  <td class="align-middle text-right">
+                    <label style="margin-bottom: 0rem" for="radProgramacion{{ i }}">
+                      {{ cacheProgramacionesOps[i].count }}
+                    </label>
+                  </td>
+                  <td class="align-middle">
+                    <label style="margin-bottom: 0rem" for="radProgramacion{{ i }}">
+                      {{ prog.automovil!.placa }} [{{ prog.automovil!.caja }}]
+                    </label>
+                  </td>
+                  <td class="align-middle">
+                    <label style="margin-bottom: 0rem" for="radProgramacion{{ i }}">
+                      {{ prog.nombreUsuario }}
+                    </label>
+                  </td>
+                  <td class="align-middle">
+                    <label style="margin-bottom: 0rem" for="radProgramacion{{ i }}">
+                      {{ prog.fecha!.format('DD/MM/YYYY hh:mm') }}
+                    </label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-12 form-inline" *ngIf="selProgramRow >= 0">
+          <div class="custom-control custom-checkbox ml-1">
+            <input
+              type="radio"
+              class="custom-control-input"
+              id="radVisualizar"
+              formControlName="selDeshabilitacion"
+              [(ngModel)]="selDeshabilitaciones"
+              [value]="1"
+            />
+            <label class="custom-control-label" for="radVisualizar"> Visualizar Deshabilitaciones </label>
+          </div>
+          <div class="custom-control custom-checkbox ml-2">
+            <input
+              type="radio"
+              class="custom-control-input"
+              id="radDeshabilitar"
+              formControlName="selDeshabilitacion"
+              [(ngModel)]="selDeshabilitaciones"
+              [value]="2"
+            />
+            <label class="custom-control-label" for="radDeshabilitar"> Deshabilitar Dias Programacion </label>
+          </div>
+          <div><button (click)="generatePdf()">Open PDF</button></div>
+        </div>
+        <div class="col-md-12 mt-4" *ngIf="selDeshabilitaciones === 1">
+          <div class="table-responsive">
+            <table class="table table-sm border mt-2">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Fechas</th>
+                  <th>Horarios</th>
+                  <th>Descripcion</th>
+                  <th>Usuario</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let progDeshab of cacheProgDeshabilitaciones; let i = index">
+                  <td style="width: 1rem">
+                    <button type="button" class="btn btn-danger btn-sm btn-block" (click)="doDeleteDeshabilitacion(progDeshab.id!)">
+                      <fa-icon icon="times"></fa-icon>
+                    </button>
+                  </td>
+                  <td class="align-middle">
+                    <ng-template ngFor let-fecha [ngForOf]="progDeshab.fechas">
+                      {{ fecha.fecha }}
+                      <ng-template [ngIf]="i > 0"> , </ng-template>
+                    </ng-template>
+                  </td>
+                  <td class="align-middle">
+                    {{ getProgDeshabHorarioCats(progDeshab) }}
+                  </td>
+                  <td class="align-middle">
+                    {{ progDeshab.descripcion }}
+                  </td>
+                  <td>
+                    {{ progDeshab.nombreUsuario }}
+                  </td>
+                  <td class="align-middle">
+                    {{ progDeshab.fecha!.format('DD/MM/YYYY hh:mm') }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="mt-4 col-md-12" *ngIf="selDeshabilitaciones === 2">
+          <div class="row">
+            <div class="col-md-3">
+              <table class="table table-sm border mt-2" formArrayName="deshabDias">
+                <tbody>
+                  <tr *ngFor="let dia of cacheProgramaciones[selProgramRow].dias; let i = index" [formGroupName]="i">
+                    <td class="align-middle" style="width: 1rem">
+                      <div class="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="chkDeshabDias{{ i }}"
+                          formControlName="dia"
+                          [value]="dia"
+                          [(ngModel)]="selDeshabDias[i]"
+                          (change)="onDeshabilitacionFilter()"
+                        />
+                        <label class="custom-control-label" for="chkDeshabDias{{ i }}"></label>
+                      </div>
+                    </td>
+                    <td class="align-middle" style="font-size: 0.75rem">
+                      <label style="margin-bottom: 0rem" for="chkDeshabDias{{ i }}">
+                        {{ dia.nombre }}
+                      </label>
+                    </td>
+                  </tr>
+                  <tr></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-3">
+              <table class="table table-sm border mt-2" formArrayName="deshabTurnos">
+                <tbody>
+                  <tr *ngFor="let horarioCat of cacheProgramaciones[selProgramRow].horarioCatalogos; let i = index" [formGroupName]="i">
+                    <td class="align-middle" style="width: 1rem">
+                      <div class="custom-control custom-checkbox">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="chkHorarioCats{{ i }}"
+                          formControlName="horarioCat"
+                          [value]="horarioCat"
+                          [(ngModel)]="selDeshabTurnos[i]"
+                          (change)="onDeshabilitacionFilter()"
+                        />
+                        <label class="custom-control-label" for="chkHorarioCats{{ i }}"></label>
+                      </div>
+                    </td>
+                    <td class="align-middle" style="font-size: 0.75rem">
+                      <label style="margin-bottom: 0rem" for="chkHorarioCats{{ i }}">
+                        {{ horarioCat.horaInicio }} - {{ horarioCat.horaFin }}
+                      </label>
+                    </td>
+                  </tr>
+                  <tr></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="col-md-6 border pt-2">
+              <div class="input-group input-group-sm">
+                <input type="text" class="form-control" formControlName="deshabDescripcion" [(ngModel)]="deshabDescripcion" />
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-sm btn-primary" (click)="doSaveDeshabilitacion()">
+                    <fa-icon icon="save"></fa-icon>
+                    Guardar
+                  </button>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-sm mt-2" formArrayName="deshabHorarios">
+                  <tbody>
+                    <tr *ngFor="let horario of cacheProgramaciones[selProgramRow].horarios; let i = index" [formGroupName]="i">
+                      <td class="align-middle" style="width: 1rem">
+                        <div class="custom-control custom-checkbox">
+                          <input
+                            type="checkbox"
+                            class="custom-control-input"
+                            id="chkDeshabHorarios{{ i }}"
+                            formControlName="horario"
+                            [value]="horario"
+                            [(ngModel)]="selDeshabHorarios[i]"
+                          />
+                          <label class="custom-control-label" for="chkDeshabHorarios{{ i }}"></label>
+                        </div>
+                      </td>
+                      <td>
+                        <label style="margin-bottom: 0rem" for="chkDeshabHorarios{{ i }}">
+                          {{ horario.fechaDia!.format('DD/MM/YYYY') }}
+                        </label>
+                      </td>
+                      <td>
+                        <label style="margin-bottom: 0rem" for="chkDeshabHorarios{{ i }}">
+                          {{ horario.fechaDia!.format('dddd') }}
+                        </label>
+                      </td>
+                      <td>
+                        <label style="margin-bottom: 0rem" for="chkDeshabHorarios{{ i }}">
+                          {{ horario.horarioCatalogo!.horaInicio }}
+                          -
+                          {{ horario.horarioCatalogo!.horaFin }}
+                        </label>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

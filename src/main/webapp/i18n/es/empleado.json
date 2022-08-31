@@ -1,0 +1,39 @@
+{
+  "gesconApp": {
+    "empleado": {
+      "home": {
+        "title": "Empleados",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Empleado",
+        "createOrEditLabel": "Crear o editar Empleado",
+        "notFound": "Ningún Empleados encontrado"
+      },
+      "created": "Un nuevo Empleado ha sido creado con el identificador {{ param }}",
+      "updated": "Un Empleado ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Empleado ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Empleado {{ id }}?"
+      },
+      "detail": {
+        "title": "Empleado"
+      },
+      "id": "ID",
+      "estado": "Estado",
+      "tipo": "Tipo",
+      "codigo": "Codigo",
+      "codigoAcceso": "Codigo Acceso",
+      "telefonoTrabajo": "Telefono Trabajo",
+      "telefonoTrabajo1": "Telefono Trabajo 1",
+      "gradoInstrucion": "Grado Instrucion",
+      "emailCoorporativo": "Email Coorporativo",
+      "fechaIngreso": "Fecha Ingreso",
+      "inasistencias": "Inasistencias",
+      "tardanzas": "Tardanzas",
+      "imagen": "Imagen",
+      "sueldo": "Sueldo",
+      "firma": "Firma",
+      "persona": "Persona",
+      "cargo": "Cargo"
+    }
+  }
+}

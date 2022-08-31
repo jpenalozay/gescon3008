@@ -1,0 +1,30 @@
+{
+  "gesconApp": {
+    "alumnoDesarrollo": {
+      "home": {
+        "title": "Alumno Desarrollos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Alumno Desarrollo",
+        "createOrEditLabel": "Crear o editar Alumno Desarrollo",
+        "notFound": "Ningún Alumno Desarrollos encontrado"
+      },
+      "created": "Un nuevo Alumno Desarrollo ha sido creado con el identificador {{ param }}",
+      "updated": "Un Alumno Desarrollo ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Alumno Desarrollo ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Alumno Desarrollo {{ id }}?"
+      },
+      "detail": {
+        "title": "Alumno Desarrollo"
+      },
+      "id": "ID",
+      "clasesTeoriaProgramadas": "Clases Teoria Programadas",
+      "clasesPracticasProgramas": "Clases Practicas Programas",
+      "clasesInasistenciaTeoria": "Clases Inasistencia Teoria",
+      "clasesInasistenciaPractica": "Clases Inasistencia Practica",
+      "clasesRealizadasTeoria": "Clases Realizadas Teoria",
+      "clasesRealizadasPractica": "Clases Realizadas Practica",
+      "alumnoDesarrolloEstado": "Alumno Desarrollo Estado"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "gesconApp": {
+    "InscripcionFormaPago": {
+      "null": "",
+      "EFECTIVO": "EFECTIVO",
+      "TARJETA": "TARJETA",
+      "DEPOSITO_CUENTA": "DEPOSITO_CUENTA"
+    }
+  }
+}

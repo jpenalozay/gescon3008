@@ -1,0 +1,14 @@
+{
+  "gesconApp": {
+    "AlumnoDesarrolloEstado": {
+      "null": "",
+      "NORMAL": "NORMAL",
+      "AMARILLO_TEORIA": "AMARILLO_TEORIA",
+      "AMARRILLO_PRACTICA": "AMARRILLO_PRACTICA",
+      "ROJO_TEORIA": "ROJO_TEORIA",
+      "ROJO_PRACTICA": "ROJO_PRACTICA",
+      "DESERTO": "DESERTO",
+      "FINALIZO": "FINALIZO"
+    }
+  }
+}

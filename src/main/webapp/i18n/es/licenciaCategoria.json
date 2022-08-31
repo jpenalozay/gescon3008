@@ -1,0 +1,28 @@
+{
+  "gesconApp": {
+    "licenciaCategoria": {
+      "home": {
+        "title": "Licencia Categorias",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Licencia Categoria",
+        "createOrEditLabel": "Crear o editar Licencia Categoria",
+        "notFound": "Ningún Licencia Categorias encontrado"
+      },
+      "created": "Un nuevo Licencia Categoria ha sido creado con el identificador {{ param }}",
+      "updated": "Un Licencia Categoria ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Licencia Categoria ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Licencia Categoria {{ id }}?"
+      },
+      "detail": {
+        "title": "Licencia Categoria"
+      },
+      "id": "ID",
+      "categoria": "Categoria",
+      "alumnoCategoria": "Alumno Categoria",
+      "profesor": "Profesor",
+      "asignatura": "Asignatura",
+      "intructores": "Intructores"
+    }
+  }
+}

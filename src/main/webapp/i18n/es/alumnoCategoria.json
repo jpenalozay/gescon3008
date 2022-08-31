@@ -1,0 +1,26 @@
+{
+  "gesconApp": {
+    "alumnoCategoria": {
+      "home": {
+        "title": "Alumno Categorias",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Alumno Categoria",
+        "createOrEditLabel": "Crear o editar Alumno Categoria",
+        "notFound": "Ningún Alumno Categorias encontrado"
+      },
+      "created": "Un nuevo Alumno Categoria ha sido creado con el identificador {{ param }}",
+      "updated": "Un Alumno Categoria ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Alumno Categoria ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Alumno Categoria {{ id }}?"
+      },
+      "detail": {
+        "title": "Alumno Categoria"
+      },
+      "id": "ID",
+      "licenciaNumeroAlumno": "Licencia Numero Alumno",
+      "alumno": "Alumno",
+      "categoria": "Categoria"
+    }
+  }
+}

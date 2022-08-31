@@ -1,0 +1,10 @@
+<div class="modal-header bg-{{ classAlert }}">
+  {{ title }}
+</div>
+<div class="modal-body">
+  {{ message }}
+  <div [innerHTML]="innerHtml"></div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-{{ classAlert }}" (click)="modal.close(true)">Aceptar</button>
+</div>

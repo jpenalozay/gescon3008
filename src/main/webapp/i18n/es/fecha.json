@@ -1,0 +1,26 @@
+{
+  "gesconApp": {
+    "fecha": {
+      "home": {
+        "title": "Fechas",
+        "refreshListLabel": "Refrescar lista",
+        "notFound": "Ningún Fechas encontrado"
+      },
+      "detail": {
+        "title": "Fecha"
+      },
+      "id": "ID",
+      "fecha": "Fecha",
+      "dia": "Dia",
+      "mes": "Mes",
+      "anio": "Anio",
+      "diaNombre": "Dia Nombre",
+      "diaNombreCorto": "Dia Nombre Corto",
+      "feriado": "Feriado",
+      "laboral": "Laboral",
+      "finSemana": "Fin Semana",
+      "horario": "Horario",
+      "programacionDeshabilitacion": "Programacion Deshabilitacion"
+    }
+  }
+}

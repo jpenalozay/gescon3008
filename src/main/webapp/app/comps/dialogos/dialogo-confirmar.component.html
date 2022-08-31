@@ -1,0 +1,10 @@
+<div class="modal-header bg-warning">
+  {{ title }}
+</div>
+<div class="modal-body">
+  {{ message }}
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="modal.close(true)">Aceptar</button>
+  <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+</div>

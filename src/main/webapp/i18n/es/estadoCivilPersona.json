@@ -1,0 +1,11 @@
+{
+  "gesconApp": {
+    "EstadoCivilPersona": {
+      "null": "",
+      "SOLTERO": "SOLTERO",
+      "CASADO": "CASADO",
+      "DIVORCIADO": "DIVORCIADO",
+      "VIUDO": "VIUDO"
+    }
+  }
+}

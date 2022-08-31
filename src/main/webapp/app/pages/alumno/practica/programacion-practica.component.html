@@ -1,0 +1,327 @@
+<form [formGroup]="formEntity!">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header"><h5>Buscar</h5></div>
+        <div class="card-body">
+          <label> Ingresar DNI, Codigo o Nombre </label>
+          <div class="input-group input-group-sm">
+            <input
+              type="text"
+              class="custom-select custom-select-sm text-uppercase"
+              placeholder="Ingrese DNI, Codigo o Nombre"
+              id="filterAlumno"
+              list="lstFilterAlumno"
+              formControlName="filterAlumno"
+              [(ngModel)]="filterAlumno"
+              (keyup)="doFilterPressKey()"
+            />
+            <datalist id="lstFilterAlumno">
+              <option *ngFor="let filter of cacheAlumnos" [ngValue]="filter.key">{{ filter.value }}</option>
+            </datalist>
+            <div class="input-group-append">
+              <button type="button" class="btn btn-sm btn-primary" (click)="doAlumnoSel()">Seleccionar</button>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-7 text-center">
+              <img *ngIf="selAlumno" class="img-thumbnail" style="max-height: 300px" />
+            </div>
+            <div class="col-md-5">
+              <div class="form-group">
+                <label class="col-form-label-sm" for="alumCodigo">Codigo</label>
+                <input
+                  type="number"
+                  class="form-control form-control-sm text-right"
+                  id="alumCodigo"
+                  value="{{ getAlumnoCodigo() }}"
+                  placeholder="Codigo"
+                  readonly
+                />
+              </div>
+              <div class="form-group">
+                <label class="col-form-label-sm" for="alumDNI">DNI</label>
+                <input
+                  type="number"
+                  class="form-control form-control-sm text-right"
+                  id="alumDNI"
+                  value="{{ getAlumnoDni() }}"
+                  placeholder="DNI"
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="alumNombres" class="form-control-sm col-form-label col-sm-4 text-right">Nombres</label>
+            <input
+              type="text"
+              class="form-control form-control-sm col-sm-8"
+              id="alumNombres"
+              value="{{ getAlumnoNombres() }}"
+              placeholder="Nombres"
+              readonly
+            />
+          </div>
+          <div class="form-group row">
+            <label for="alumApellidos" class="form-control-sm col-form-label col-sm-4 text-right">Apellidos</label>
+            <input
+              type="text"
+              class="form-control form-control-sm col-sm-8"
+              id="alumApellidos"
+              value="{{ getAlumnoApPaterno() }} {{ getAlumnoApMaterno() }}"
+              placeholder="Apellidos"
+              readonly
+            />
+          </div>
+          <div class="form-group row">
+            <label for="alumCurso" class="form-control-sm col-form-label col-sm-4 text-right">Curso</label>
+            <input
+              type="text"
+              class="form-control form-control-sm col-sm-8"
+              id="alumCurso"
+              value="{{ getAlumnoCurso() }}"
+              placeholder="Curso"
+              readonly
+            />
+          </div>
+          <div class="form-group row">
+            <label for="alumCDetalle" class="form-control-sm col-form-label col-sm-4 text-right">C. Detalle</label>
+            <input
+              type="text"
+              class="form-control form-control-sm col-sm-8"
+              id="alumCDetalle"
+              value="{{ getAlumnoAsignatura() }}"
+              placeholder="C. Detalle"
+              readonly
+            />
+          </div>
+          <div class="form-group row">
+            <label for="alumClasesCant" class="form-control-sm col-form-label col-sm-8 text-right">Clases Practicas</label>
+            <input
+              type="number"
+              class="form-control form-control-sm col-sm-4 text-right"
+              id="alumClasesCant"
+              placeholder="Clases Practicas"
+              readonly
+              value="{{ getAlumnoClases() }}"
+            />
+          </div>
+          <div class="form-group row">
+            <label for="alumClasesMark" class="form-control-sm col-form-label col-sm-8 text-right">Clases Programadas</label>
+            <input
+              type="number"
+              class="form-control form-control-sm col-sm-4 text-right"
+              id="alumClasesMark"
+              placeholder="Clases Programadas"
+              readonly
+              value="{{ getAlumnoClasesAsignadas() }}"
+            />
+          </div>
+          <div class="form-group row">
+            <label for="alumClasesUsed" class="form-control-sm col-form-label col-sm-8 text-right">Clases Asistidas</label>
+            <input
+              type="number"
+              class="form-control form-control-sm col-sm-4 text-right"
+              id="alumClasesUsed"
+              placeholder="Clases Asistidas"
+              readonly
+            />
+          </div>
+          <!--
+          <button type="button" class="btn btn-sm btn-primary btn-block d-flex" (click)="doPrintPDF()">
+            Exportar a PDF
+            <fa-icon [icon]="iconPDF" class="ml-auto"></fa-icon>
+          </button>
+          <button type="button" class="btn btn-sm btn-primary btn-block d-flex">
+            Imprimir Reporte
+            <fa-icon [icon]="iconPrint" class="ml-auto"></fa-icon>
+          </button>
+          <button type="button" class="btn btn-sm btn-primary btn-block d-flex">
+            Exportar a Excel
+            <fa-icon [icon]="iconExcel" class="ml-auto"></fa-icon>
+          </button>
+          <button type="button" class="btn btn-sm btn-primary btn-block d-flex">
+            Enviar Correo Electronico
+            <fa-icon [icon]="iconEmail" class="ml-auto"></fa-icon>
+          </button>
+          -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="col-md-12 border p-3">
+        <h4 class="text-muted">Filtros de Busqueda</h4>
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="col-form-label-sm" for="alumCodigo">Categoria</label>
+                  <select
+                    class="form-control form-control-sm"
+                    (change)="onLicCategoriaSel()"
+                    formControlName="filterCategoria"
+                    [(ngModel)]="filterCategoria"
+                  >
+                    <option *ngFor="let licCategoria of cacheLicCategorias" [ngValue]="licCategoria">{{ licCategoria.categoria }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="col-form-label-sm" for="alumCodigo">Desde</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    ngbDatepicker
+                    formControlName="filterFechaInicio"
+                    [(ngModel)]="filterFechaInicio"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="col-form-label-sm" for="alumCodigo">Hasta</label>
+                  <input type="date" class="form-control" ngbDatepicker formControlName="filterFechaFin" [(ngModel)]="filterFechaFin" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="col-form-label-sm" for="alumCodigo">Instructor</label>
+                  <select class="form-control form-control-sm" formControlName="filterInstructor" [(ngModel)]="filterInstructor">
+                    <option *ngFor="let instructor of cacheInstructores" [ngValue]="instructor">
+                      {{ getInstructorFullname(instructor.id!) }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex"></div>
+        </div>
+      </div>
+      <div class="col-md-12 border p-3 mt-3">
+        <h5 class="text-muted mb-4">Programacion</h5>
+
+        <div class="d-flex">
+          <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-success" ngbButtonLabel>
+              <input
+                type="checkbox"
+                class="btn-check"
+                ngbButton
+                formControlName="selHorarioTipo"
+                [(ngModel)]="selHorarioTipo"
+                [value]="1"
+                (click)="doLibresFilter()"
+              />
+              Libres
+            </label>
+          </div>
+          <div class="btn-group-toggle ml-4" data-toggle="buttons">
+            <label class="btn btn-danger" ngbButtonLabel>
+              <input type="checkbox" class="btn-check" ngbButton [value]="2" (click)="doAlumnoLoad(selAlumno!.codigo!)" />
+              Programados
+            </label>
+          </div>
+          <div class="btn-group-toggle ml-auto" data-toggle="buttons">
+            <label class="btn btn-primary" ngbButtonLabel *ngIf="selHorarioTipo != 2">
+              <input type="checkbox" class="btn-check" ngbButton (click)="doHorarioSave()" />
+              Registrar Clase(s)
+            </label>
+          </div>
+        </div>
+        <div class="table-responsive" id="tblHorarios">
+          <table class="table table-sm mt-4" formArrayName="horarios" id="table-to-print">
+            <thead>
+              <tr>
+                <th>ACCION</th>
+                <th>DIA</th>
+                <th>FECHA</th>
+                <th>HORARIO</th>
+                <th>INSTRUCTOR</th>
+                <th *ngIf="selHorarioTipo == 2">ALUMNO</th>
+                <th>SALIDA</th>
+                <th>AUTO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let horario of cacheHorarios; let i = index"
+                [formGroupName]="i"
+                [ngClass]="!horario.alumno ? 'text-success' : 'text-danger'"
+              >
+                <td class="align-middle">
+                  <div class="custom-control custom-checkbox" *ngIf="!horario.alumno">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="chkHorarios{{ i }}"
+                      formControlName="selected"
+                      [(ngModel)]="cacheHorariosInfo[i].selected"
+                    />
+                    <label class="custom-control-label" for="chkHorarios{{ i }}"></label>
+                  </div>
+                  <button *ngIf="horario.alumno" type="button" class="btn btn-sm btn-danger" (click)="doHorarioDelete(horario)">
+                    <fa-icon [icon]="iconTimes"></fa-icon>
+                  </button>
+                </td>
+                <td class="align-middle">
+                  <label style="margin-bottom: 0rem" for="chkHorarios{{ i }}">
+                    {{ horario.fechaDia!.format('ddd') }}
+                  </label>
+                </td>
+                <td class="align-middle">
+                  <label style="margin-bottom: 0rem" for="chkHorarios{{ i }}">
+                    {{ horario.fechaDia!.format('DD/MM/YYYY') }}
+                  </label>
+                </td>
+                <td class="align-middle">
+                  <label style="margin-bottom: 0rem" for="chkHorarios{{ i }}">
+                    {{ horario.horarioCatalogo!.horaInicio }}
+                    -
+                    {{ horario.horarioCatalogo!.horaFin }}
+                  </label>
+                </td>
+                <td class="align-middle">
+                  <label style="margin-bottom: 0rem" for="chkHorarios{{ i }}">
+                    {{ getInstructorFullname(horario.instructor!.id!) }}
+                  </label>
+                </td>
+                <td *ngIf="selHorarioTipo == 2">
+                  {{ selAlumno!.persona!.apellidoPaterno! }} {{ selAlumno!.persona!.apellidoMaterno![0] }}.,
+                  {{ selAlumno!.persona!.nombres! }}
+                </td>
+                <td class="align-middle">
+                  <select
+                    class="form-control"
+                    *ngIf="!horario.alumno"
+                    formControlName="lugarSalida"
+                    [(ngModel)]="cacheHorariosInfo[i].lugarSalida"
+                  >
+                    <option *ngFor="let lugarSalida of cacheLugarSalida" [ngValue]="lugarSalida">{{ lugarSalida.nombre }}</option>
+                  </select>
+                  <label style="margin-bottom: 0rem" for="chkHorarios{{ i }}" *ngIf="horario.alumno">
+                    {{ horario.lugarSalida!.nombre! }}
+                  </label>
+                </td>
+                <td class="align-middle">
+                  <label style="margin-bottom: 0rem" for="chkHorarios{{ i }}">
+                    {{ horario.automovil!.placa! }} [{{ horario.automovil!.caja! }}]
+                  </label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-12 text-right mt-2">
+          <button type="button" class="btn btn-sm btn-primary" (click)="doPrintPDF()">
+            Exportar a PDF
+            <fa-icon [icon]="iconPDF" class="ml-auto"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,21 @@
+{
+  "gesconApp": {
+    "distrit": {
+      "home": {
+        "title": "Distrits",
+        "refreshListLabel": "Refrescar lista",
+        "notFound": "Ningún Distrits encontrado"
+      },
+      "detail": {
+        "title": "Distrit"
+      },
+      "id": "ID",
+      "departamento": "Departamento",
+      "provincia": "Provincia",
+      "distrito": "Distrito",
+      "ubigeo": "Ubigeo",
+      "sucursal": "Sucursal",
+      "persona": "Persona"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gesconApp": {
+    "formulario": {
+      "home": {
+        "title": "Formularios",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Formulario",
+        "createOrEditLabel": "Crear o editar Formulario",
+        "notFound": "Ningún Formularios encontrado"
+      },
+      "created": "Un nuevo Formulario ha sido creado con el identificador {{ param }}",
+      "updated": "Un Formulario ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Formulario ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Formulario {{ id }}?"
+      },
+      "detail": {
+        "title": "Formulario"
+      },
+      "id": "ID",
+      "estado": "Estado",
+      "tipo": "Tipo",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "configuracionFormCarac": "Configuracion Form Carac",
+      "modulo": "Modulo",
+      "formularioCaracteristica": "Formulario Caracteristica"
+    }
+  }
+}

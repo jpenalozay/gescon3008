@@ -1,0 +1,30 @@
+{
+  "gesconApp": {
+    "formularioCaracteristica": {
+      "home": {
+        "title": "Formulario Caracteristicas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Formulario Caracteristica",
+        "createOrEditLabel": "Crear o editar Formulario Caracteristica",
+        "notFound": "Ningún Formulario Caracteristicas encontrado"
+      },
+      "created": "Un nuevo Formulario Caracteristica ha sido creado con el identificador {{ param }}",
+      "updated": "Un Formulario Caracteristica ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Formulario Caracteristica ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Formulario Caracteristica {{ id }}?"
+      },
+      "detail": {
+        "title": "Formulario Caracteristica"
+      },
+      "id": "ID",
+      "estado": "Estado",
+      "tipo": "Tipo",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "configuracionFormCarac": "Configuracion Form Carac",
+      "formulario": "Formulario"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "gesconApp": {
+    "TipoFormularioCaracteristica": {
+      "null": "",
+      "REPORTE": "REPORTE",
+      "DOCUMENTO": "DOCUMENTO",
+      "ACCION_COMUNICACION_INTERNA": "ACCION_COMUNICACION_INTERNA",
+      "ACCION_COMUNICACION_EXTERNA": "ACCION_COMUNICACION_EXTERNA"
+    }
+  }
+}

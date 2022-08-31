@@ -1,0 +1,10 @@
+{
+  "gesconApp": {
+    "EmpleadoTipo": {
+      "null": "",
+      "ADMINISTRATIVO": "ADMINISTRATIVO",
+      "DOCENTE": "DOCENTE",
+      "OTRO": "OTRO"
+    }
+  }
+}

@@ -1,0 +1,489 @@
+enum CursoTipo{REGULAR,LIBRE,PROMOCIONAL}
+enum AutomovilTipo{SEDAM,HATCHBACK,SUV}
+enum AutomovilCaja{MECANICO,AUTOMATICO}
+enum TipoUnidadOrganizativa{JUNTA,OFICINA,DEPARTAMENTO,AREA}
+enum Sexo{VARON,MUJER}
+enum EmpleadoTipo{ADMINISTRATIVO,DOCENTE,OTRO}
+enum EstadoEmpleado{ACTIVO,VACACIONES,FIN_DE_CONTRARO,DESPEDIDO,CESADO}
+enum TipoDocumentoPersona{DNI,CEDULA,DOCUMENTO_DE_EXTRANJERIA}
+enum EstadoCivilPersona{SOLTERO,CASADO,DIVORCIADO,VIUDO}
+enum ComputadoraTipo{SERVIDOR,ESCRITORIO,LAPTOP,TABLET,CELULAR,OTRO}
+enum GradoInstruccion{OTRO,COLEGIO,UNIVERSITARIO,POSTGRADO}
+enum AlumnoEstado{INSCRITO,ENPROCESO,DEUDA,AJUSTIFICAR,ABANDONO,APROBADO,DESAPROBADO}
+enum AlumnoTipo{REGULAR,EXCEPCIONAL}
+enum Ocupacion{OTRO,DEPENDIENTE,INDEPENDIENTE}
+enum InscripcionEstado{CANCELADO,EN_PAGOS,EN_DEUDA}
+enum InscripcionFormaPago{EFECTIVO,TARJETA,DEPOSITO_CUENTA}
+enum AlumnoDesarrolloEstado{NORMAL,AMARILLO_TEORIA,AMARRILLO_PRACTICA,ROJO_TEORIA,ROJO_PRACTICA,DESERTO,FINALIZO}
+enum ProgramacionEstado{PROGRAMADO,DESHABILITADO,DESHABILITADO_ENPARTE}
+enum HorarioTipo{ADMINISTRACION,POR_CONFIRMAR,ALUMNO}
+enum Estado{HABILITADO,DESHABILITADO}
+enum SiNo{SI,NO}
+enum TipoDocumentoVenta{FACTURA,BOLETA,TICKET,NOTA_DE_VENTA,PROFORMA,GUIA_REMISION}
+enum TipoRequisito{OBLIGATORIO,OPCIONAL}
+enum Paises{PERU,VENEZUELA,COLOMBIA}
+enum RequitisoTipo{SELECTIVO, NUMERICO, NINGUNO}
+enum TipoFormulario{CATALOGO,PARQUE,OPERACIONAL_SIMPLE,OPERACIONAL_COMPLEJA,TRANSACCIONAL_SIMPLE,TRANSACCIONAL_COMPLEJA}
+enum TipoFormularioCaracteristica{REPORTE,DOCUMENTO,ACCION_COMUNICACION_INTERNA,ACCION_COMUNICACION_EXTERNA}
+
+entity Usuario {
+    codigo String minlength(2) maxlength(6) required unique
+    codigoSecreto String minlength(2) maxlength(6)
+    imagen ImageBlob
+}
+
+entity Computadora {    
+    nombre String minlength(2) maxlength(256) required unique
+    nombreCorto String minlength(2) maxlength(64) required unique
+    descripcion String minlength(2) maxlength(1024) required unique
+    estadoComputadora Estado required
+    mac String minlength(2) maxlength(30) required unique
+    tipo ComputadoraTipo required
+}
+
+entity Fecha {//Entidad donde se guarda los dias meses y años de todas las operaciones, es como un calendario
+    fecha LocalDate required unique
+    dia Integer required
+    mes Integer required
+    anio Integer required
+    diaNombre String minlength(2) maxlength(32) required
+    diaNombreCorto String minlength(2) maxlength(8) required
+    feriado SiNo
+    laboral SiNo
+    finSemana SiNo   
+}
+
+entity Distrit{ // Para carga y busqueda rapida de un distrito con sus respectivas descripción de departamento y provincias
+    departamento String minlength(2)
+    provincia String minlength(2)
+    distrito String minlength(2)
+    ubigeo String
+}
+
+entity LicenciaCategoria {
+    categoria String minlength(2) maxlength(64) required unique
+}
+
+entity Sucursal {
+    activo Estado required
+    codigo String minlength(1) maxlength(3) required unique
+    central SiNo required
+    nombre String minlength(2) maxlength(256) required unique
+    nombreCorto String minlength(2) maxlength(64) required unique
+    nombreAbreviado String minlength(2) maxlength(16) required unique
+    fechaInicio LocalDate   
+    telefono String maxlength(15)
+    telefono1 String maxlength(15)    
+    imagen ImageBlob
+    direccion String required minlength(2) maxlength(1024) required unique
+}
+
+entity SucursalSerie {
+    activo Estado required
+    tipoDocumento TipoDocumentoVenta required
+    serie String minlength(2) maxlength(8) required
+    fechaEmision LocalDate
+    numeroMaximo Integer
+    numeroUltimo Integer required   
+}
+
+entity Area (T_AREA) {
+    activo Estado required
+    codigo String minlength(2) maxlength(4) required unique
+    tipo TipoUnidadOrganizativa required
+    nombre String minlength(2) maxlength(256) unique required
+    nombreCorto String minlength(2) maxlength(64) unique required
+}
+
+entity Cargo (T_CARGO) {
+    activo Estado required
+    codigo String minlength(2) maxlength(4) unique required
+    nombre String minlength(2) maxlength(256) unique required
+    nombreCorto String minlength(2) maxlength(64) unique required
+}
+
+entity Persona{
+    nacionalidad Paises 
+    nombres String minlength(1) maxlength(128) required
+    apellidoPaterno String minlength(1) maxlength(128) required
+    apellidoMaterno String minlength(1) maxlength(128)
+    fechaNacimiento LocalDate 
+    genero Sexo     
+    estadoCivil EstadoCivilPersona 
+    tipoDocumento TipoDocumentoPersona required
+    numeroDocumento String minlength(2) maxlength(15) unique required
+    telefonoParticular String minlength(1) maxlength(20)
+    telefonoParticular1 String minlength(1) maxlength(20)
+    emailPersonal String minlength(1) maxlength(128)
+    direccion String minlength(1) maxlength(1024) 
+}
+
+entity Empleado {
+    estado EstadoEmpleado required
+    tipo EmpleadoTipo required
+    codigo String minlength(1) maxlength(6) unique required
+    codigoAcceso String minlength(1) maxlength(5)    
+    telefonoTrabajo String minlength(1) maxlength(20)       
+    telefonoTrabajo1 String minlength(1) maxlength(20)
+    gradoInstrucion GradoInstruccion
+    emailCoorporativo String minlength(1) maxlength(128) unique
+    fechaIngreso LocalDate required    
+    inasistencias Float min(0) max(100)
+    tardanzas Float min(0) max(100)
+    imagen Blob
+    sueldo Float
+    firma ImageBlob
+}
+
+entity Profesor {
+    activo Estado required
+    codigo String minlength(1) maxlength(6) unique required
+    teoria SiNo required
+    practica SiNo required
+    licenciaNumero String minlength(2) maxlength(16) unique 
+}
+
+entity Curso {
+	activo Estado required
+	tipo CursoTipo required
+	nombre String minlength(2) maxlength(512) unique required
+	nombreCorto String minlength(2) maxlength(64) unique required
+    descripcion String minlength(2) maxlength(1024)
+    imagen ImageBlob	
+}
+
+entity Asignatura {
+	activo Estado required
+	nombre String minlength(2) maxlength(512) unique required
+	nombreCorto String minlength(2) maxlength(64) unique required
+    descripcion String minlength(2) maxlength(1024)
+    documento TextBlob
+	horasTeoricas Integer
+	horasPracticas Integer 
+	numeroClasesTeoria Integer
+    numeroClasesPractica Integer
+	vigencia Integer
+	costo Float required
+    imagen ImageBlob
+}
+
+entity AsignaturaAdiciones { // Por ejemplo lo que viene con la asignaruta: Horas Extras, folletos, libros, 1 hora personalizada de teoria, es solo INFORMATIVO
+    activo Estado required
+    nombre String minlength(2) maxlength(256) unique required
+    nombreCorto String minlength(2) maxlength(64) unique required
+    descripcion String minlength(2) maxlength(1024)
+    imagen ImageBlob
+}
+
+entity Teoria { // Teoria de A-1 Curso básico, Teoría de A-II Curso Básico, Teoría de A-I Curso Completo 
+    activo Estado required
+    nombre String minlength(2) maxlength(512) unique required
+    nombreCorto String minlength(2) maxlength(64) unique required
+    descripcion String minlength(2) maxlength(1024)
+    imagen ImageBlob
+}
+
+entity TeoriaHorarioCatalogo { // Plan 1 LMMJV 10AM12AM, PLAN2 LMMJV 8AM10AM, ....
+    activo Estado required
+    nombre String minlength(2) maxlength(512) unique required
+    nombreCorto String minlength(2) maxlength(64) unique required
+    descripcion String
+    imagen ImageBlob
+	periodo String
+	anio String
+	mes String
+    dia String
+    horaInicio Integer
+    horaFin Integer    
+}
+
+entity AsignaturaRequisito {// A2 Requisito: que tenga obligatoriamente a-1, a1 requisito: licencia de conducir o Brevete sea de la provinica donde se requiere el curso, INFORMATIVO
+    activo Estado required
+    tipo TipoRequisito required
+	nombre String minlength(2) maxlength(64) unique required
+    descripcion String minlength(2) maxlength(1024)    
+    imagen ImageBlob 
+}
+
+entity Automovil {
+	activo Estado required
+    codigo String minlength(1) required maxlength(6) unique
+	nombre String minlength(2) maxlength(64) unique
+	tipo AutomovilTipo required
+	placa String minlength(2) maxlength(64) unique required
+	marca String minlength(2) maxlength(64)
+	modelo String minlength(2) maxlength(64)
+	anio String minlength(4) maxlength(4)
+	soatVencimiento Instant
+	revisionTecnicaVencimiento Instant
+	caja AutomovilCaja	
+    imagen ImageBlob
+}
+
+entity Alumno {
+	codigo String minlength(7) maxlength(7) required unique
+	estado AlumnoEstado required
+	tipo AlumnoTipo required
+	alumnoGradoInstruccion GradoInstruccion
+	ocupacion Ocupacion	
+	imagen ImageBlob
+}
+
+entity AlumnoUsuario{
+    activo Estado
+    usuario String minlength(4) maxlength(128) required unique
+	clave String minlength(4) maxlength(128) required 	
+	imagen ImageBlob
+}
+
+entity AlumnoCategoria {
+	licenciaNumeroAlumno String minlength(2) maxlength(16) required
+}
+
+entity AlumnoClases {
+    clasesTotales Integer
+    clasesProgramadas Integer
+    clasesRealizadas Integer
+}
+
+entity Inscripcion {
+	codigo String minlength(9) maxlength(9) required unique
+	estado InscripcionEstado required
+	numeroDocumento Integer required
+    fecha Instant required	
+	costoTotal Float min(0) max(10000)
+    costoFaltante Float min(0) max(10000)
+}
+
+entity InscripcionDetalle {
+    codigo String
+    fechaInicio LocalDate
+}
+
+entity InscripcionPago{
+	formaPago InscripcionFormaPago required
+	monto Float min(0) max(10000) required
+	fecha LocalDate required
+	codigoOP String minlength(2) maxlength(16)
+    numeroDocumento Integer required
+	plazoPago Integer min(0) max(360)	
+}
+
+entity RequisitosInscripcion{ // pago de 5 soles por carnet, caja automatica 20 soles
+	activo Estado required
+	obligatorio SiNo required
+	nombre String minlength(2) maxlength(512) unique required
+	nombreCorto String minlength(2) maxlength(512) unique required
+	costo Float
+	imagen ImageBlob
+    tipoRequisito RequitisoTipo
+    valores String // para el check seria: [anterior] val01,val02,val03 => {val01:4.3, val02:8, val03:5}
+                   // min, max, inc, factor
+}
+
+entity InscripcionAdicional{	 // documentacion
+    descripcion String
+    imagen ImageBlob
+    documento TextBlob
+    cantidad String
+    costo Float
+}
+
+entity InscripcionDescuento {
+    descripcion String
+    monto Integer   
+}
+
+entity AlumnoDesarrollo{
+	clasesTeoriaProgramadas Integer min(0) max(100)
+	clasesPracticasProgramas Integer min(0) max(100)
+	clasesInasistenciaTeoria Integer min(0) max(100)
+	clasesInasistenciaPractica Integer min(0) max(100)		
+	clasesRealizadasTeoria Integer min(0) max(100)
+	clasesRealizadasPractica Integer min(0) max(100)
+	alumnoDesarrolloEstado AlumnoDesarrolloEstado 
+}
+
+entity Dia{	
+	nombre String minlength(2) maxlength(16) required unique
+    nombreCorto String minlength(2) maxlength(6) required unique
+}
+
+entity HorarioCatalogo{ // HOrarios de manejor  7 9, 9 11, 11 1, 3 5, 5 7 
+	activo Estado required
+	codigo Integer min(1) max(99) required unique
+	horaInicio String minlength(1) maxlength(8) required
+	horaFin	String minlength(1) maxlength(8) required
+	descripcion	String minlength(1) maxlength(16) required
+}
+
+entity Programacion{
+	estado ProgramacionEstado required
+	codigo String minlength(9) required unique	
+	fechaInicio LocalDate
+	fechaFin LocalDate
+	deshabilitaciones Integer min(0) max(99)
+    fecha Instant
+    nombreUsuario String
+}
+
+entity ProgramacionDeshabilitacion{
+	activo Estado required
+	codigo String minlength(6) maxlength(100) required unique
+	descripcion String
+    fecha Instant
+    nombreUsuario String
+}
+
+entity Horario{
+	activo Estado required
+	tipo HorarioTipo required
+    fechaDia LocalDate
+	fechaDiaSem Integer min(1) max(7)
+}
+
+entity HorarioDeshabilitacion{
+	activo Estado required
+	tipo HorarioTipo required
+}
+
+entity InscripcionAsignaturaRequisito(inscripcion_asignatura_req){	
+    descripcion String
+    imagen ImageBlob
+    documento TextBlob
+}
+
+entity LugarSalida {
+    nombre String
+}
+
+// Configuración
+entity Modulo{
+    estado Estado
+    nombre String
+    descripcion String
+    imagen ImageBlob
+}
+
+entity Formulario {
+    estado Estado
+    tipo TipoFormulario
+    codigo String
+    nombre String
+    descripcion String    
+}
+
+entity FormularioCaracteristica{
+    estado Estado
+    tipo TipoFormularioCaracteristica
+    codigo String
+    nombre String
+    descripcion String    
+}
+
+entity ConfiguracionFormCarac{
+    estado Estado
+}
+
+//search Alumno with elasticsearch
+filter Persona
+filter Alumno
+filter Empleado
+filter Profesor
+filter Asignatura
+filter AsignaturaAdiciones
+filter Persona
+filter SucursalSerie
+filter Dia
+filter HorarioCatalogo
+filter Horario
+filter HorarioDeshabilitacion
+filter Automovil
+filter Fecha
+filter Programacion
+filter ProgramacionDeshabilitacion
+filter Inscripcion
+filter InscripcionDetalle
+filter Usuario
+readOnly Fecha, Distrit
+//skipClient for Departamento, Distrito, Provincia
+//dto A, B with mapstruct
+//service Profesor with serviceClass
+//service Automovil with serviceImpl
+//paginate Computadora with pagination
+//paginate Empleado with infinite-scroll
+//paginate Inscripcion with pager
+
+relationship ManyToMany {	
+	Usuario{Sucursal(nombre) required} to Sucursal{usuario(codigo)}
+    Usuario{computadora(nombre)} to Computadora{usuario(codigo)}    
+    Asignatura{categoria(categoria)} to LicenciaCategoria{asignatura}
+    Programacion{dia(nombre)} to Dia{programacion}
+	Programacion{horarioCatalogo(descripcion)} to HorarioCatalogo{programacion}
+	ProgramacionDeshabilitacion{fechas(fecha)} to Fecha{programacionDeshabilitacion}
+    ProgramacionDeshabilitacion{horarioCatalogo(descripcion)} to HorarioCatalogo{programacionDeshabilitaciones}
+//	HorarioDeshabilitacion{horario(descripcion)}  to HorarioCatalogo{horarioDeshabilitacion}
+    Teoria{horarios(nombreCorto)} to TeoriaHorarioCatalogo{teoria}
+    Asignatura{adicional(nombre)} to AsignaturaAdiciones{asignatura}
+    Asignatura{horario(nombre)} to TeoriaHorarioCatalogo{asignatura}
+    //Curso{asignatura(nombre)} to Asignatura{curso}
+    Asignatura{asignaturaRequisito(nombre)} to AsignaturaRequisito{asignatura}
+    Profesor{licenciasPermitidas(categoria)} to LicenciaCategoria{intructores}
+    Formulario{modulo(nombre)} to Modulo{formulario}
+    FormularioCaracteristica{formulario(nombre)} to Formulario{formularioCaracteristica}
+}
+
+relationship OneToMany {
+    Sucursal to Area{sucursal(nombre) required}
+    Sucursal to SucursalSerie{sucursal(nombre) required}
+    Area to Area{areaSuperior(nombre)}
+    Area to Cargo{areaPerteneciente(nombre) required}    
+    Cargo to Cargo{cargoSuperior(nombre)}
+    Cargo to Empleado{cargo(nombre) required}    
+    Distrit to Sucursal{distrito(distrito) required}
+    Distrit to Persona{distrito(distrito)}
+    Alumno to AlumnoUsuario{alumno(codigo) required}
+	Alumno to AlumnoCategoria{alumno(codigo) required}
+    Alumno to Inscripcion{alumno(codigo) required}
+    Alumno to Horario{alumno(codigo)}
+    Profesor to Horario{instructor(codigo)}
+	LicenciaCategoria to AlumnoCategoria{categoria(categoria) required}
+	Inscripcion{inscripcionPagos} to InscripcionPago{inscripcion(codigo) required}
+	Inscripcion to InscripcionAdicional{inscripcion(codigo) required}
+    InscripcionDetalle to InscripcionAsignaturaRequisito{inscripcionDetalle(codigo) required}
+    RequisitosInscripcion to InscripcionAdicional{inscripcionRequisito(nombre)}
+    //InscripcionAdicional to RequisitosInscripcion{inscripcionRequisito(descripcion)}
+    //Inscripcion to RequisitosInscripcion{inscripcion(codigo) required}
+    Curso to Asignatura{curso(nombre) required}
+    Inscripcion to InscripcionDetalle{inscripcion(codigo) required}    
+    Asignatura to InscripcionDetalle{asignatura(nombre) required}
+    Profesor to Programacion{profesor(codigo) required}
+    Automovil to Programacion{automovil(nombre) required}
+	Programacion to ProgramacionDeshabilitacion{programacion(codigo) required}
+    Usuario to ProgramacionDeshabilitacion {usuario(codigo)}
+	Programacion to Horario{programacion(codigo) required}
+	Fecha to Horario{fecha(fecha) required}
+	HorarioCatalogo to Horario{horarioCatalogo(descripcion) required}
+	Automovil to Horario{automovil(nombre) required}
+	ProgramacionDeshabilitacion{horarioDeshabilitaciones} to HorarioDeshabilitacion{programacionDeshabilitacion(codigo) required}   
+    Horario to HorarioDeshabilitacion{horario}
+    AsignaturaRequisito to InscripcionAsignaturaRequisito{asignaturaRequisito(descripcion) required}
+    TeoriaHorarioCatalogo to InscripcionDetalle{horario(nombre) required}
+    SucursalSerie{inscripcionPagos} to InscripcionPago{serie(serie) required} // Insertado el 17 02 2022
+    LicenciaCategoria to Profesor{licenciaCategoria(categoria)}
+    LugarSalida to Horario{lugarSalida(nombre)}
+    //ConfiguracionFormulario
+    Modulo to ConfiguracionFormCarac{modulo(nombre) required}
+    Formulario to ConfiguracionFormCarac{formulario(nombre) required}
+    FormularioCaracteristica to ConfiguracionFormCarac{formularioCaracteristica(nombre) required}
+}
+
+relationship OneToOne {    
+    Empleado{persona(numeroDocumento) required} to Persona
+    Profesor{empleado(codigo) required} to Empleado
+    Usuario{user(login) required} to User
+    Usuario{empleado(codigo)} to Empleado
+    Alumno{persona(numeroDocumento) required} to Persona
+    InscripcionDescuento{inscripcion(codigo)} to Inscripcion{insDescuento}
+    Alumno{alumnoClases(clasesTotales)} to AlumnoClases{alumno(codigo)}
+}

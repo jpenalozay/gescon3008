@@ -1,0 +1,30 @@
+{
+  "gesconApp": {
+    "curso": {
+      "home": {
+        "title": "Cursos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Curso",
+        "createOrEditLabel": "Crear o editar Curso",
+        "notFound": "Ningún Cursos encontrado"
+      },
+      "created": "Un nuevo Curso ha sido creado con el identificador {{ param }}",
+      "updated": "Un Curso ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Curso ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Curso {{ id }}?"
+      },
+      "detail": {
+        "title": "Curso"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "tipo": "Tipo",
+      "nombre": "Nombre",
+      "nombreCorto": "Nombre Corto",
+      "descripcion": "Descripcion",
+      "imagen": "Imagen",
+      "asignatura": "Asignatura"
+    }
+  }
+}

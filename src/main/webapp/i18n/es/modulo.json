@@ -1,0 +1,29 @@
+{
+  "gesconApp": {
+    "modulo": {
+      "home": {
+        "title": "Modulos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Modulo",
+        "createOrEditLabel": "Crear o editar Modulo",
+        "notFound": "Ningún Modulos encontrado"
+      },
+      "created": "Un nuevo Modulo ha sido creado con el identificador {{ param }}",
+      "updated": "Un Modulo ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Modulo ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Modulo {{ id }}?"
+      },
+      "detail": {
+        "title": "Modulo"
+      },
+      "id": "ID",
+      "estado": "Estado",
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "imagen": "Imagen",
+      "configuracionFormCarac": "Configuracion Form Carac",
+      "formulario": "Formulario"
+    }
+  }
+}

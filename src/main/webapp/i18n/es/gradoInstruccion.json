@@ -1,0 +1,11 @@
+{
+  "gesconApp": {
+    "GradoInstruccion": {
+      "null": "",
+      "OTRO": "OTRO",
+      "COLEGIO": "COLEGIO",
+      "UNIVERSITARIO": "UNIVERSITARIO",
+      "POSTGRADO": "POSTGRADO"
+    }
+  }
+}

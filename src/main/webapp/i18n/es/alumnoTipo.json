@@ -1,0 +1,9 @@
+{
+  "gesconApp": {
+    "AlumnoTipo": {
+      "null": "",
+      "REGULAR": "REGULAR",
+      "EXCEPCIONAL": "EXCEPCIONAL"
+    }
+  }
+}

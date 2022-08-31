@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-3">
+    <span class="hipster img-fluid rounded"></span>
+  </div>
+
+  <!--
+  <div class="content">
+    <div class="content__container">
+      <p class="content__container__text">
+        Hola
+      </p>
+      
+      <ul class="content__container__list">
+        <li class="content__container__list__item">Mundo !</li>
+        <li class="content__container__list__item">JCH !</li>
+        <li class="content__container__list__item">Usuario !</li>
+        <li class="content__container__list__item">Todos !</li>
+      </ul>
+    </div>
+  </div>
+-->
+  <div class="col-md-9">
+    <h1 class="display-4"><span>Bienvenido a</span> JCH</h1>
+    <p class="lead">Escuela de Conductores Integrales Jorge Chavez</p>
+
+    <div [ngSwitch]="account !== null">
+      <div class="alert alert-success" *ngSwitchCase="true">
+        <span id="home-logged-message" *ngIf="account"
+          >Hola {{ account.firstName }} {{ account.lastName }} ingresaste como "{{ account.login }}".</span
+        >
+      </div>
+
+      <div class="alert alert-success" *ngSwitchCase="false">
+        <a (click)="login()">Acceder al sistema</a>
+      </div>
+    </div>
+
+    <p>
+      <span>Quieres probar el app Gescon!</span>
+      <a href="https://www.creinfor.com/" target="_blank" rel="noopener noreferrer"> App</a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="modal-header bg-primary text-white">
+  <h5 class="modal-title">Validacion Usuario ADMIN</h5>
+</div>
+<div class="modal-body">
+  <form [formGroup]="formLogin!">
+    <div class="form-group">
+      <label for="fieldUser">Nombre de Usuario</label>
+      <input
+        type="text"
+        class="form-control"
+        id="fieldUser"
+        placeholder="Ingrese Usuario"
+        formControlName="username"
+        [(ngModel)]="fieldUser"
+      />
+    </div>
+    <div class="form-group">
+      <label for="fieldPass">Contraseña</label>
+      <input
+        type="password"
+        class="form-control"
+        id="fieldPass"
+        placeholder="Contraseña"
+        formControlName="password"
+        [(ngModel)]="fieldPass"
+      />
+    </div>
+    <p class="text-danger" *ngIf="!isValid">Usuario o Contraseña Invalidos!!!</p>
+  </form>
+</div>
+<div class="modal-footer">
+  <div class="row">
+    <button type="button" class="btn btn-sm btn-secondary mr-2" (click)="modal.close(false)">Cerrar</button>
+    <button type="button" class="btn btn-sm btn-primary" (click)="doValidar()">Verificar</button>
+  </div>
+</div>

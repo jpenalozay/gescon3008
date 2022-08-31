@@ -1,0 +1,11 @@
+{
+  "gesconApp": {
+    "AlumnoEstado": {
+      "null": "",
+      "INSCRITO": "INSCRITO",
+      "FINALIZO": "FINALIZO",
+      "DESERTO": "DESERTO",
+      "DEUDA": "DEUDA"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "gesconApp": {
+    "TipoRequisito": {
+      "null": "",
+      "OBLIGATORIO": "OBLIGATORIO",
+      "OPCIONAL": "OPCIONAL"
+    }
+  }
+}

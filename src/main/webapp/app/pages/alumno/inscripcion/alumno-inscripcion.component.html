@@ -1,0 +1,342 @@
+<div class="row">
+  <div class="col-md-12">
+    <form [formGroup]="formEntity!">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">Alumno</div>
+            <div class="card-body">
+              <div class="row mt-1 mx-1">
+                <div class="col-md-3 mb-1">
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control text-right" placeholder="Ingrese DNI o RUC"
+                      formControlName="personaCodigo" />
+                    <div class="input-group-append">
+                      <button type="button" class="btn btn-sm btn-primary" (click)="doPersonaFind()">
+                        <fa-icon icon="search"></fa-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-1">
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" placeholder="Nombre Completo" readonly
+                      value="{{ selPersona.nombres }} {{ selPersona.apellidoPaterno }} {{ selPersona.apellidoMaterno }}" />
+                  </div>
+                </div>
+                <div class="col-md-3 mb-1" *ngIf="selAlumno.id && selAlumno.id! > 0">
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Codigo Alumno: </span>
+                    </div>
+                    <input type="text" class="form-control" readonly formControlName="alumnoCodigo"
+                      [(ngModel)]="selAlumno.codigo" />
+                  </div>
+                </div>
+                <div class="col-md-4 mb-1">
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Nª Telefono Actual: </span>
+                    </div>
+                    <input type="text" class="form-control text-right" placeholder="Telefono Actual"
+                      formControlName="personaTelefono" [(ngModel)]="selPersona.telefonoParticular" />
+                  </div>
+                </div>
+                <div class="col-md-5 mb-1">
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Correo Electronico Actual: </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Correo Electronico"
+                      formControlName="personaEmail" [(ngModel)]="selPersona.emailPersonal" />
+                  </div>
+                </div>
+                <div class="col-md-3 mb-1" *ngIf="selAlumno.id && selAlumno.id! > 0">
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Estado Alumno: </span>
+                    </div>
+                    <input type="text" class="form-control" readonly formControlName="alumnoEstado"
+                      [(ngModel)]="selAlumno.estado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-md-6 col-sm-6">
+          <div class="card">
+            <div class="card-header d-flex">
+              <h4 class="mr-auto">Cursos</h4>
+              <button type="button" class="btn btn-sm btn-light" (click)="doAsignaturaClearSel()">
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="row mt-1 mx-1">
+                <div class="col-md-12">
+                  <div class="d-flex justify-content-between">
+                    <ul ngbNav #nav="ngbNav" #navbarAsignaturas class="nav-pills border-right pr-2"
+                      orientation="vertical" [(activeId)]="selAsignatura" (activeIdChange)="onNavAsignaturaSelected()">
+                      <li *ngFor="let asignatura of cacheAsignaturas; let i = index"
+                        [ngbNavItem]="'navAsignaturas' + asignatura.id">
+                        <a ngbNavLink [class.nav-hidden]="asignatura.id! < 1">({{ asignatura.curso ?
+                          asignatura.curso.nombreCorto : '' }}) {{ asignatura.nombre }}</a>
+                        <ng-template ngbNavContent>
+                          <ng-template [ngIf]="asignatura.id! > 0">
+                            <img class="img-thumbnail" style="max-height: 300px"
+                              [src]="'data:' + asignatura.imagenContentType + ';base64,' + asignatura.imagen" />
+                            <div class="text-primary">
+                              <h1><strong><u>S/. {{ asignatura.costo }}</u></strong></h1>
+                              <!-- <div class="col-md-12 my-4 d-flex flex-column flex-nowrap"> -->
+                                <!-- <span *ngFor="let asignaturaAdd of cacheAsignaturaAdds"
+                                  class="badge badge-info ml-2 mt-1"> -->
+                                <p class="text-success my-0" *ngFor="let asignaturaAdd of cacheAsignaturaAdds"><em>{{ asignaturaAdd.nombre }}</em></p>
+                              <!-- </div> -->
+                            </div>
+                          </ng-template>
+                        </ng-template>
+                      </li>
+                    </ul>
+                    <div [ngbNavOutlet]="nav" class="pl-4 mx-auto text-center"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-1 mx-1">
+                <div class="col-md-6 mb-1">
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Fecha Inicio: </span>
+                    </div>
+                    <input type="date" class="form-control" placeholder="Fecha Inicio" ngbDatepicker
+                      #fechaInicio="ngbDatepicker" formControlName="fechaInicio"
+                      [(ngModel)]="documentAsig!.fechaInicio" />
+                  </div>
+                </div>
+                <div class="col-md-12 mb-1">
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Horario clases teorica: </span>
+                    </div>
+                    <select class="form-control" formControlName="horario" [(ngModel)]="selHorario">
+                      <option *ngFor="let horario of cacheAsignaturaHorarios" [ngValue]="horario">{{ horario.nombre }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>      
+        <div class="col-md-6 col-sm-6">
+          <div class="card">
+            <div class="card-header">Horas Adicionales</div>
+            <div class="card-body" formArrayName="adicionales">
+              <div class="row mt-1 mx-1" *ngFor="let reqInscripcion of cacheReqInscripcion; let i = index"
+                [formGroupName]="i">
+                <div class="col-sm-4">
+                  <input class="form-check-input" type="checkbox" id="frmInscripAd{{ i }}" formControlName="selected"
+                    [(ngModel)]="cacheReqInscripcionVals[i].valSelected" [checked]="isCheckedAddicional(reqInscripcion)"
+                    (change)="onCheckedAddicional($event, reqInscripcion, i)" />
+                  <label class="form-check-label text-muted" for="frmInscripAd{{ i }}">
+                    {{ reqInscripcion.nombre }}
+                  </label>
+                </div>
+                <div class="col-sm-4">
+                  <div *ngIf="reqInscripcion.tipoRequisito == 'SELECTIVO'; then reqAdSelThen; else reqAdSelElse">ignorar
+                  </div>
+                  <ng-template #reqAdSelThen>
+                    <div class="form-inline ml-4">
+                      <ng-template ngFor let-valSelect [ngForOf]="cacheReqInscripcionVals[i].valMulti"
+                        let-valIndex="index">
+                        <input class="form-check-input" type="checkbox" id="frmInscripAd{{ i }}val{{ valIndex }}"
+                          (change)="onCheckReqAddSelectivo($event, reqInscripcion, i, valIndex)" />
+                        <label class="form-check-label text-bold" for="frmInscripAd{{ i }}val{{ valIndex }}">
+                          {{ valSelect }}
+                        </label>
+                      </ng-template>
+                    </div>
+                  </ng-template>
+                  <ng-template #reqAdSelElse>
+                    <div *ngIf="reqInscripcion.tipoRequisito == 'NUMERICO'; then reqAdThen; else reqAdElse">ignorar
+                    </div>
+                    <ng-template #reqAdThen>
+                      <input type="number" class="form-control form-control-sm text-right" placeholder="Precio"
+                        value="{{ cacheReqInscripcionVals[i].valNumber }}"
+                        (change)="onNumberReqAddSelectivo($event, reqInscripcion, i)"
+                        min="{{ cacheReqInscripcionVals[i].valNumberMin }}"
+                        max="{{ cacheReqInscripcionVals[i].valNumberMax }}"
+                        step="{{ cacheReqInscripcionVals[i].valNumberInc }}" />
+                    </ng-template>
+                    <ng-template #reqAdElse> </ng-template>
+                  </ng-template>
+                </div>
+                <div class="col-sm-4">
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Total S/.: </span>
+                    </div>
+                    <input type="text" class="form-control text-right" placeholder="Precio" [readonly]="!selAdminJwt"
+                      formControlName="total" [(ngModel)]="cacheReqInscripcionVals[i].valTotal" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--
+            <div class="card-footer text-muted text-right">
+              <h4>SubTotal Adicional: {{ getTotalAddicional() }}</h4>
+            </div>
+            -->
+          </div>
+        </div>
+        <!--
+        <div class="col-md-6 mt-2">
+          <div class="card">
+            <div class="card-header" (click)="collapse.toggle()">Carga de Adjuntos</div>
+            <div class="card-body" #collapse="ngbCollapse" [(ngbCollapse)]="cacheAsignaturaReqsOblig">
+              <div class="row mt-1 mx-1" *ngFor="let asigRequisito of cacheAsignaturaReqs; let i = index">
+                <div class="col-sm-12">
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <input type="checkbox" aria-label="Checkbox for following text input"
+                          [checked]="isCheckedUpload(asigRequisito)" disabled />
+                        <span class="input-group-text"
+                          [ngClass]="{ 'text-danger': asigRequisito.tipo == 'OBLIGATORIO' }">{{
+                          asigRequisito.nombre
+                          }}</span>
+                      </div>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="uplAsigAdicional{{ i }}"
+                        (change)="onUploadDocuments($event, asigRequisito)" />
+                      <label class="custom-file-label" for="uplAsigAdicional{{ i }}">Adjuntar {{
+                        getUploadName(asigRequisito) }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        -->
+        <div class="col-md-6 col-sm-6 mt-2">
+          <div class="row">
+            <div class="col-md-8 mt-2">
+              <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                  <button type="button" class="btn btn-sm btn-secondary" (click)="doAdminValidate()">
+                    {{ selAdminJwt ? '[x]' : '[ ]' }}
+                  </button>
+                  <span class="input-group-text" style="float: right">Descuento: </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Descripción" [readonly]="!selAdminJwt"
+                  formControlName="insDescuentoDesc" [(ngModel)]="documentDescuento.descripcion" />
+              </div>
+            </div>
+            <div class="col-md-4 mt-2">
+              <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">S/.: </span>
+                </div>
+                <input type="number" class="form-control text-right" placeholder="Monto" [readonly]="!selAdminJwt"
+                  formControlName="insDescuentoMont" [(ngModel)]="documentDescuento.monto" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="card">
+                <div class="card-header">Recibo</div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12 mt-2">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Sucursal: </span>
+                        </div>
+                        <select class="form-control" formControlName="selSucursalId" [(ngModel)]="selSucursalId"
+                          (change)="onSucursalSel()">
+                          <option *ngFor="let sucursal of cacheSucursales" [ngValue]="sucursal.id">{{ sucursal.nombre }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Tipo: </span>
+                        </div>
+                        <select class="form-control" (change)="onSucursalTipoSel($event)">
+                          <option *ngFor="let tipo of cacheSucursalSeriesTipos" [ngValue]="tipo">{{ tipo }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Serie: </span>
+                        </div>
+                        <select class="form-control text-right" formControlName="selSucursalSerieId"
+                          [(ngModel)]="selSucursalSerieId" (change)="onSucursalSerieSel()">
+                          <option *ngFor="let serie of cacheSucursalSeriesSerie" [ngValue]="serie.id">{{ serie.serie }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Número: </span>
+                        </div>
+                        <input type="number" class="form-control text-right" [readonly]="!selAdminJwt"
+                          formControlName="incipcionCodigo" [(ngModel)]="document!.codigo" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="card">
+                <div class="card-body">
+                  <div class="input-group input-group-sm mt-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Costo total: S/. </span>
+                    </div>
+                    <input type="number" class="form-control text-right" readonly value="{{ getTotalPrev() }}" />
+                  </div>
+                  <div class="input-group input-group-sm mt-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Adelanto: S/. </span>
+                    </div>
+                    <input type="number" class="form-control text-right" formControlName="incripcionPagoMonto"
+                      [(ngModel)]="documentPago.monto" />
+                  </div>
+                  <div class="input-group input-group-sm mt-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Saldo: S/. </span>
+                    </div>
+                    <input type="number" class="form-control text-right" readonly value="{{ getTotalDoc() }}" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 mt-4 d-flex justify-content-center">
+              <button type="button" class="btn btn-secondary">Cancelar</button>
+              <button type="button" class="btn btn-primary ml-4" (click)="doSave()"
+                *ngIf="selPersona && selPersona.id! > 0 && document!.numeroDocumento! > 0">
+                Guardar
+              </button>
+            </div>
+          </div>
+        </div>      
+      </div>
+    </form>
+  </div>
+</div>

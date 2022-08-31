@@ -1,0 +1,36 @@
+{
+  "gesconApp": {
+    "programacion": {
+      "home": {
+        "title": "Programacions",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Programacion",
+        "createOrEditLabel": "Crear o editar Programacion",
+        "notFound": "Ningún Programacions encontrado"
+      },
+      "created": "Un nuevo Programacion ha sido creado con el identificador {{ param }}",
+      "updated": "Un Programacion ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Programacion ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Programacion {{ id }}?"
+      },
+      "detail": {
+        "title": "Programacion"
+      },
+      "id": "ID",
+      "estado": "Estado",
+      "codigo": "Codigo",
+      "fechaInicio": "Fecha Inicio",
+      "fechaFin": "Fecha Fin",
+      "deshabilitaciones": "Deshabilitaciones",
+      "fecha": "Fecha",
+      "nombreUsuario": "Nombre Usuario",
+      "programacionDeshabilitacion": "Programacion Deshabilitacion",
+      "horario": "Horario",
+      "dia": "Dia",
+      "horarioCatalogo": "Horario Catalogo",
+      "profesor": "Profesor",
+      "automovil": "Automovil"
+    }
+  }
+}

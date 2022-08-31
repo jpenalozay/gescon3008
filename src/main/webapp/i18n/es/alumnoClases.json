@@ -1,0 +1,27 @@
+{
+  "gesconApp": {
+    "alumnoClases": {
+      "home": {
+        "title": "Alumno Clases",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Alumno Clases",
+        "createOrEditLabel": "Crear o editar Alumno Clases",
+        "notFound": "Ningún Alumno Clases encontrado"
+      },
+      "created": "Un nuevo Alumno Clases ha sido creado con el identificador {{ param }}",
+      "updated": "Un Alumno Clases ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Alumno Clases ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Alumno Clases {{ id }}?"
+      },
+      "detail": {
+        "title": "Alumno Clases"
+      },
+      "id": "ID",
+      "clasesTotales": "Clases Totales",
+      "clasesProgramadas": "Clases Programadas",
+      "clasesRealizadas": "Clases Realizadas",
+      "alumno": "Alumno"
+    }
+  }
+}

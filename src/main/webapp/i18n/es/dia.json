@@ -1,0 +1,26 @@
+{
+  "gesconApp": {
+    "dia": {
+      "home": {
+        "title": "Dias",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Dia",
+        "createOrEditLabel": "Crear o editar Dia",
+        "notFound": "Ningún Dias encontrado"
+      },
+      "created": "Un nuevo Dia ha sido creado con el identificador {{ param }}",
+      "updated": "Un Dia ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Dia ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Dia {{ id }}?"
+      },
+      "detail": {
+        "title": "Dia"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "nombreCorto": "Nombre Corto",
+      "programacion": "Programacion"
+    }
+  }
+}

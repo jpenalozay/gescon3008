@@ -1,0 +1,37 @@
+{
+  "gesconApp": {
+    "persona": {
+      "home": {
+        "title": "Personas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Persona",
+        "createOrEditLabel": "Crear o editar Persona",
+        "notFound": "Ningún Personas encontrado"
+      },
+      "created": "Un nuevo Persona ha sido creado con el identificador {{ param }}",
+      "updated": "Un Persona ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Persona ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Persona {{ id }}?"
+      },
+      "detail": {
+        "title": "Persona"
+      },
+      "id": "ID",
+      "nacionalidad": "Nacionalidad",
+      "nombres": "Nombres",
+      "apellidoPaterno": "Apellido Paterno",
+      "apellidoMaterno": "Apellido Materno",
+      "fechaNacimiento": "Fecha Nacimiento",
+      "genero": "Genero",
+      "estadoCivil": "Estado Civil",
+      "tipoDocumento": "Tipo Documento",
+      "numeroDocumento": "Numero Documento",
+      "telefonoParticular": "Telefono Particular",
+      "telefonoParticular1": "Telefono Particular 1",
+      "emailPersonal": "Email Personal",
+      "direccion": "Direccion",
+      "distrito": "Distrito"
+    }
+  }
+}

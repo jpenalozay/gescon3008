@@ -1,0 +1,10 @@
+{
+  "gesconApp": {
+    "CursoTipo": {
+      "null": "",
+      "REGULAR": "REGULAR",
+      "LIBRE": "LIBRE",
+      "PROMOCIONAL": "PROMOCIONAL"
+    }
+  }
+}

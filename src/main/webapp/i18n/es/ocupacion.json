@@ -1,0 +1,10 @@
+{
+  "gesconApp": {
+    "Ocupacion": {
+      "null": "",
+      "OTRO": "OTRO",
+      "DEPENDIENTE": "DEPENDIENTE",
+      "INDEPENDIENTE": "INDEPENDIENTE"
+    }
+  }
+}

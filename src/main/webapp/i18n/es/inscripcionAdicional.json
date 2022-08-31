@@ -1,0 +1,30 @@
+{
+  "gesconApp": {
+    "inscripcionAdicional": {
+      "home": {
+        "title": "Inscripcion Adicionals",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Inscripcion Adicional",
+        "createOrEditLabel": "Crear o editar Inscripcion Adicional",
+        "notFound": "Ningún Inscripcion Adicionals encontrado"
+      },
+      "created": "Un nuevo Inscripcion Adicional ha sido creado con el identificador {{ param }}",
+      "updated": "Un Inscripcion Adicional ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Inscripcion Adicional ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Inscripcion Adicional {{ id }}?"
+      },
+      "detail": {
+        "title": "Inscripcion Adicional"
+      },
+      "id": "ID",
+      "descripcion": "Descripcion",
+      "imagen": "Imagen",
+      "documento": "Documento",
+      "cantidad": "Cantidad",
+      "costo": "Costo",
+      "inscripcion": "Inscripcion",
+      "inscripcionRequisito": "Inscripcion Requisito"
+    }
+  }
+}

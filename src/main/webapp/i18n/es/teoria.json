@@ -1,0 +1,29 @@
+{
+  "gesconApp": {
+    "teoria": {
+      "home": {
+        "title": "Teorias",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Teoria",
+        "createOrEditLabel": "Crear o editar Teoria",
+        "notFound": "Ningún Teorias encontrado"
+      },
+      "created": "Un nuevo Teoria ha sido creado con el identificador {{ param }}",
+      "updated": "Un Teoria ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Teoria ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Teoria {{ id }}?"
+      },
+      "detail": {
+        "title": "Teoria"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "nombre": "Nombre",
+      "nombreCorto": "Nombre Corto",
+      "descripcion": "Descripcion",
+      "imagen": "Imagen",
+      "horarios": "Horarios"
+    }
+  }
+}

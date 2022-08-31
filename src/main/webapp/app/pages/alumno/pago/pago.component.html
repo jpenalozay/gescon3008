@@ -1,0 +1,321 @@
+<div class="row">
+  <div class="col-md-12">
+    <form [formGroup]="formEntity!">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h5>Buscar</h5>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <label> Ingresar DNI, Código o Nombre </label>
+                  <div class="input-group input-group-sm">
+                    <input
+                      type="text"
+                      class="custom-select custom-select-sm text-uppercase"
+                      placeholder="Ingrese aquí"
+                      id="filterAlumno"
+                      list="lstFilterAlumno"
+                      formControlName="filterAlumno"
+                      [(ngModel)]="filterAlumno"
+                      (keyup)="doFilterPressKey()"
+                    />
+                    <datalist id="lstFilterAlumno">
+                      <option *ngFor="let filter of cacheAlumnos" [ngValue]="filter.key">{{ filter.value }}</option>
+                    </datalist>
+                    <button type="button" class="btn btn-primary" (click)="doAlumnoSel()">Seleccionar</button>
+                  </div>
+                </div>
+                <div class="col-md-6 row">
+                  <div class="col-md-6">
+                    <label class="form-label-sm form-control-sm" for="alumCodigo">Código</label>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm text-right"
+                      id="alumCodigo"
+                      value="{{ getAlumnoCodigo() }}"
+                      placeholder="Codigo"
+                      readonly
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-control-sm col-form-label-sm text-right" for="alumDNI">DNI</label>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm text-right"
+                      id="alumDNI"
+                      value="{{ getAlumnoDni() }}"
+                      placeholder="DNI"
+                      readonly
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 text-center">
+                  <img *ngIf="selAlumno" class="img-thumbnail" style="max-height: 300px" />
+                </div>
+                <div class="col-md-6">
+                  <div class="col-md-12">
+                    <label for="alumNombres" class="form-control-sm col-form-label text-right">Nombres</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      id="alumNombres"
+                      value="{{ getAlumnoNombres() }}"
+                      placeholder="Nombres"
+                      readonly
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label for="alumApellidos" class="form-control-sm col-form-label text-right">Apellidos</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      id="alumApellidos"
+                      value="{{ getAlumnoApPaterno() }} {{ getAlumnoApMaterno() }}"
+                      placeholder="Apellidos"
+                      readonly
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label for="alumClasesUsed" class="form-control-sm col-form-label col-sm-8 text-right">Clases Asistidas</label>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm col-sm-4 text-right"
+                      id="alumClasesUsed"
+                      placeholder="Clases Asistidas"
+                      readonly
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <label for="alumCurso" class="form-control-sm col-form-label col-sm-4 text-right">Curso</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm col-sm-8"
+                    id="alumCurso"
+                    value="{{ getAlumnoCurso() }}"
+                    placeholder="Curso"
+                    readonly
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="alumCDetalle" class="form-control-sm col-form-label col-sm-4 text-right">C. Detalle</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm col-sm-8"
+                    id="alumCDetalle"
+                    value="{{ getAlumnoAsignatura() }}"
+                    placeholder="C. Detalle"
+                    readonly
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <div class="col-md-6">
+                      <label for="alumClasesCant" class="form-control-sm col-form-label text-right">Clases Practicas</label>
+                      <input
+                        type="number"
+                        class="form-control form-control-sm col-sm-4 text-right"
+                        id="alumClasesCant"
+                        placeholder="Clases Practicas"
+                        readonly
+                        value="{{ getAlumnoClases() }}"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="alumClasesMark" class="form-control-sm col-form-label text-right">Clases Programadas</label>
+                      <input
+                        type="number"
+                        class="form-control form-control-sm col-sm-4 text-right"
+                        id="alumClasesMark"
+                        placeholder="Clases Programadas"
+                        readonly
+                        value="{{ getAlumnoClasesAsignadas() }}"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <div class="col-md-6">
+                      <label for="alumClasesCant" class="form-control-sm col-form-label col-sm-8 text-right">S/. Total</label>
+                      <input
+                        type="number"
+                        class="form-control form-control-sm col-sm-4 text-right"
+                        id="alumClasesCant"
+                        placeholder="Clases Practicas"
+                        readonly
+                        value="{{ getTotalPrev() }}"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="alumClasesMark" class="form-control-sm col-form-label col-sm-8 text-right">S/. Pagado</label>
+                      <input
+                        type="number"
+                        class="form-control form-control-sm col-sm-4 text-right"
+                        id="alumClasesMark"
+                        placeholder="Clases Programadas"
+                        readonly
+                        value="{{ getTotalPrev() }}"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--
+            <button type="button" class="btn btn-sm btn-primary btn-block d-flex" (click)="doPrintPDF()">
+              Exportar a PDF
+              <fa-icon [icon]="iconPDF" class="ml-auto"></fa-icon>
+            </button>
+            <button type="button" class="btn btn-sm btn-primary btn-block d-flex">
+              Imprimir Reporte
+              <fa-icon [icon]="iconPrint" class="ml-auto"></fa-icon>
+            </button>
+            <button type="button" class="btn btn-sm btn-primary btn-block d-flex">
+              Exportar a Excel
+              <fa-icon [icon]="iconExcel" class="ml-auto"></fa-icon>
+            </button>
+            <button type="button" class="btn btn-sm btn-primary btn-block d-flex">
+              Enviar Correo Electronico
+              <fa-icon [icon]="iconEmail" class="ml-auto"></fa-icon>
+            </button>
+            --></div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="input-group input-group-sm">
+                <button type="button" class="btn btn-sm btn-secondary" (click)="doAdminValidate()">
+                  {{ selAdminJwt ? '[x]' : '[ ]' }}
+                </button>
+                <span class="input-group-text" style="float: right">Descuento: </span>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Descripción"
+                  [readonly]="!selAdminJwt"
+                  formControlName="insDescuentoDesc"
+                  [(ngModel)]="documentDescuento.descripcion"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text">S/.: </span>
+                <input
+                  type="number"
+                  class="form-control text-right"
+                  placeholder="Monto"
+                  [readonly]="!selAdminJwt"
+                  formControlName="insDescuentoMont"
+                  [(ngModel)]="documentDescuento.monto"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-6 mt-2">
+              <div class="card">
+                <div class="card-header">Recibo</div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12 mt-2">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Sucursal: </span>
+                        </div>
+                        <select class="form-control" formControlName="selSucursalId" [(ngModel)]="selSucursalId" (change)="onSucursalSel()">
+                          <option *ngFor="let sucursal of cacheSucursales" [ngValue]="sucursal.id">{{ sucursal.nombre }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Tipo: </span>
+                        </div>
+                        <select class="form-control" (change)="onSucursalTipoSel($event)">
+                          <option *ngFor="let tipo of cacheSucursalSeriesTipos" [ngValue]="tipo">{{ tipo }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mt-2">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Serie: </span>
+                        </div>
+                        <select
+                          class="form-control text-right"
+                          formControlName="selSucursalSerieId"
+                          [(ngModel)]="selSucursalSerieId"
+                          (change)="onSucursalSerieSel()"
+                        >
+                          <option *ngFor="let serie of cacheSucursalSeriesSerie" [ngValue]="serie.id">{{ serie.serie }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                      <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Número: </span>
+                        </div>
+                        <input
+                          type="number"
+                          class="form-control text-right"
+                          [readonly]="!selAdminJwt"
+                          formControlName="incipcionCodigo"
+                          [(ngModel)]="document!.codigo"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="card">
+                <div class="card-body">
+                  <div class="input-group input-group-sm mt-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Costo total: S/. </span>
+                    </div>
+                    <input type="number" class="form-control text-right" readonly value="{{ getTotalPrev() }}" />
+                  </div>
+                  <div class="input-group input-group-sm mt-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Adelanto: S/. </span>
+                    </div>
+                    <input
+                      type="number"
+                      class="form-control text-right"
+                      formControlName="incripcionPagoMonto"
+                      [(ngModel)]="documentPago.monto"
+                    />
+                  </div>
+                  <div class="input-group input-group-sm mt-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Saldo: S/. </span>
+                    </div>
+                    <input type="number" class="form-control text-right" readonly value="{{ getTotalDoc() }}" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

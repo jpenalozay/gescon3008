@@ -1,0 +1,32 @@
+{
+  "gesconApp": {
+    "area": {
+      "home": {
+        "title": "Areas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Area",
+        "createOrEditLabel": "Crear o editar Area",
+        "notFound": "Ningún Areas encontrado"
+      },
+      "created": "Un nuevo Area ha sido creado con el identificador {{ param }}",
+      "updated": "Un Area ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Area ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Area {{ id }}?"
+      },
+      "detail": {
+        "title": "Area"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "codigo": "Codigo",
+      "tipo": "Tipo",
+      "nombre": "Nombre",
+      "nombreCorto": "Nombre Corto",
+      "area": "Area",
+      "cargo": "Cargo",
+      "sucursal": "Sucursal",
+      "areaSuperior": "Area Superior"
+    }
+  }
+}

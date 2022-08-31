@@ -1,0 +1,28 @@
+{
+  "gesconApp": {
+    "alumnoUsuario": {
+      "home": {
+        "title": "Alumno Usuarios",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Alumno Usuario",
+        "createOrEditLabel": "Crear o editar Alumno Usuario",
+        "notFound": "Ningún Alumno Usuarios encontrado"
+      },
+      "created": "Un nuevo Alumno Usuario ha sido creado con el identificador {{ param }}",
+      "updated": "Un Alumno Usuario ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Alumno Usuario ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Alumno Usuario {{ id }}?"
+      },
+      "detail": {
+        "title": "Alumno Usuario"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "usuario": "Usuario",
+      "clave": "Clave",
+      "imagen": "Imagen",
+      "alumno": "Alumno"
+    }
+  }
+}

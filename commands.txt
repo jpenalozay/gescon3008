@@ -1,0 +1,19 @@
+
+cd src/main/webapp/app
+
+ng g module comps/componentes --routing --flat
+ng g module pages/alumno --routing
+ng g module pages/instructor --routing
+ng g module pages/extra --routing --flat
+
+ng g component comps/dialogos/dialogo-confirmar --flat --skip-tests
+ng g component comps/dialogos/dialogo-info --flat --skip-tests
+ng g component comps/dialogos/dialogo-validar-usuario --flat --skip-tests
+
+ng g component pages/alumno/inscripcion/alumno-inscripcion --flat --skip-tests
+ng g component pages/alumno/alumno-inscripcion --flat --skip-tests
+ng g component pages/alumno/practica/programacion-practica --flat --skip-tests
+
+ng g component pages/instructor/practicas/instructor-practicas-registro --flat --skip-tests
+
+ng g service core/service/common-validate --flat --skip-tests

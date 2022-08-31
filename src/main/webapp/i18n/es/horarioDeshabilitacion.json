@@ -1,0 +1,27 @@
+{
+  "gesconApp": {
+    "horarioDeshabilitacion": {
+      "home": {
+        "title": "Horario Deshabilitacions",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Horario Deshabilitacion",
+        "createOrEditLabel": "Crear o editar Horario Deshabilitacion",
+        "notFound": "Ningún Horario Deshabilitacions encontrado"
+      },
+      "created": "Un nuevo Horario Deshabilitacion ha sido creado con el identificador {{ param }}",
+      "updated": "Un Horario Deshabilitacion ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Horario Deshabilitacion ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Horario Deshabilitacion {{ id }}?"
+      },
+      "detail": {
+        "title": "Horario Deshabilitacion"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "tipo": "Tipo",
+      "programacionDeshabilitacion": "Programacion Deshabilitacion",
+      "horario": "Horario"
+    }
+  }
+}

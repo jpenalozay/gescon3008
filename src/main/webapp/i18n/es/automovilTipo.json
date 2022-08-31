@@ -1,0 +1,10 @@
+{
+  "gesconApp": {
+    "AutomovilTipo": {
+      "null": "",
+      "SEDAM": "SEDAM",
+      "HATCHBACK": "HATCHBACK",
+      "SUV": "SUV"
+    }
+  }
+}

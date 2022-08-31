@@ -1,0 +1,38 @@
+{
+  "gesconApp": {
+    "sucursal": {
+      "home": {
+        "title": "Sucursals",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Sucursal",
+        "createOrEditLabel": "Crear o editar Sucursal",
+        "notFound": "Ningún Sucursals encontrado"
+      },
+      "created": "Un nuevo Sucursal ha sido creado con el identificador {{ param }}",
+      "updated": "Un Sucursal ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Sucursal ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Sucursal {{ id }}?"
+      },
+      "detail": {
+        "title": "Sucursal"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "codigo": "Codigo",
+      "central": "Central",
+      "nombre": "Nombre",
+      "nombreCorto": "Nombre Corto",
+      "nombreAbreviado": "Nombre Abreviado",
+      "fechaInicio": "Fecha Inicio",
+      "telefono": "Telefono",
+      "telefono1": "Telefono 1",
+      "imagen": "Imagen",
+      "direccion": "Direccion",
+      "area": "Area",
+      "sucursalSerie": "Sucursal Serie",
+      "distrito": "Distrito",
+      "usuario": "Usuario"
+    }
+  }
+}

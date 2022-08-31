@@ -1,0 +1,9 @@
+{
+  "gesconApp": {
+    "AutomovilCaja": {
+      "null": "",
+      "MECANICO": "MECANICO",
+      "AUTOMATICO": "AUTOMATICO"
+    }
+  }
+}

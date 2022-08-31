@@ -1,0 +1,10 @@
+{
+  "gesconApp": {
+    "RequitisoTipo": {
+      "null": "",
+      "SELECTIVO": "SELECTIVO",
+      "NUMERICO": "NUMERICO",
+      "NINGUNO": "NINGUNO"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gesconApp": {
+    "lugarSalida": {
+      "home": {
+        "title": "Lugar Salidas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Lugar Salida",
+        "createOrEditLabel": "Crear o editar Lugar Salida",
+        "notFound": "Ningún Lugar Salidas encontrado"
+      },
+      "created": "Un nuevo Lugar Salida ha sido creado con el identificador {{ param }}",
+      "updated": "Un Lugar Salida ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Lugar Salida ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Lugar Salida {{ id }}?"
+      },
+      "detail": {
+        "title": "Lugar Salida"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "horario": "Horario"
+    }
+  }
+}

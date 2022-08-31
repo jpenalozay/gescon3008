@@ -1,0 +1,29 @@
+{
+  "gesconApp": {
+    "inscripcionDetalle": {
+      "home": {
+        "title": "Inscripcion Detalles",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Inscripcion Detalle",
+        "createOrEditLabel": "Crear o editar Inscripcion Detalle",
+        "notFound": "Ningún Inscripcion Detalles encontrado"
+      },
+      "created": "Un nuevo Inscripcion Detalle ha sido creado con el identificador {{ param }}",
+      "updated": "Un Inscripcion Detalle ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Inscripcion Detalle ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Inscripcion Detalle {{ id }}?"
+      },
+      "detail": {
+        "title": "Inscripcion Detalle"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "fechaInicio": "Fecha Inicio",
+      "inscripcionAsignaturaRequisito": "Inscripcion Asignatura Requisito",
+      "inscripcion": "Inscripcion",
+      "asignatura": "Asignatura",
+      "horario": "Horario"
+    }
+  }
+}

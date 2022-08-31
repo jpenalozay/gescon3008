@@ -1,0 +1,31 @@
+{
+  "gesconApp": {
+    "inscripcionPago": {
+      "home": {
+        "title": "Inscripcion Pagos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Inscripcion Pago",
+        "createOrEditLabel": "Crear o editar Inscripcion Pago",
+        "notFound": "Ningún Inscripcion Pagos encontrado"
+      },
+      "created": "Un nuevo Inscripcion Pago ha sido creado con el identificador {{ param }}",
+      "updated": "Un Inscripcion Pago ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Inscripcion Pago ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Inscripcion Pago {{ id }}?"
+      },
+      "detail": {
+        "title": "Inscripcion Pago"
+      },
+      "id": "ID",
+      "formaPago": "Forma Pago",
+      "monto": "Monto",
+      "fecha": "Fecha",
+      "codigoOP": "Codigo OP",
+      "numeroDocumento": "Numero Documento",
+      "plazoPago": "Plazo Pago",
+      "inscripcion": "Inscripcion",
+      "serie": "Serie"
+    }
+  }
+}

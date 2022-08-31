@@ -1,0 +1,28 @@
+{
+  "gesconApp": {
+    "inscripcionAsignaturaRequisito": {
+      "home": {
+        "title": "Inscripcion Asignatura Requisitos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Inscripcion Asignatura Requisito",
+        "createOrEditLabel": "Crear o editar Inscripcion Asignatura Requisito",
+        "notFound": "Ningún Inscripcion Asignatura Requisitos encontrado"
+      },
+      "created": "Un nuevo Inscripcion Asignatura Requisito ha sido creado con el identificador {{ param }}",
+      "updated": "Un Inscripcion Asignatura Requisito ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Inscripcion Asignatura Requisito ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Inscripcion Asignatura Requisito {{ id }}?"
+      },
+      "detail": {
+        "title": "Inscripcion Asignatura Requisito"
+      },
+      "id": "ID",
+      "descripcion": "Descripcion",
+      "imagen": "Imagen",
+      "documento": "Documento",
+      "inscripcionDetalle": "Inscripcion Detalle",
+      "asignaturaRequisito": "Asignatura Requisito"
+    }
+  }
+}

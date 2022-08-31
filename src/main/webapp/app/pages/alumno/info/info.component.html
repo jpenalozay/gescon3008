@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-md-12">
+    <form [formGroup]="formEntity!">
+      <div class="card">
+        <div class="card-header">
+          <h5>Buscar</h5>
+          <div class="row">
+            <div class="col-md-10">
+              <label> Ingresar DNI, Código o Nombre </label>
+              <div class="input-group flex-nowrap">
+                <input
+                  type="text"
+                  class="custom-select custom-select-sm text-uppercase"
+                  placeholder="Ingrese aquí"
+                  id="filterAlumno"
+                  list="lstFilterAlumno"
+                  formControlName="filterAlumno"
+                  [(ngModel)]="filterAlumno"
+                  (keyup)="doFilterPressKey()"
+                />
+                <datalist id="lstFilterAlumno">
+                  <option *ngFor="let filter of cacheAlumnos" [ngValue]="filter.key">{{ filter.value }}</option>
+                </datalist>
+                <button type="button" class="btn btn-primary" (click)="doAlumnoSel()">Seleccionar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table table-bordered table-sm table-sm">
+                  <thead>
+                    <tr>
+                      <th>Ación</th>
+                      <th>Estado</th>
+                      <th>DNI</th>
+                      <th>Código</th>
+                      <th>Nombre</th>
+                      <th>Curso</th>
+                      <th>Pagos</th>
+                      <th>Deuda</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let info of inscripcion; let i = index">
+                      <td class="align-middle">
+                        <a class="link-primary" href="">Historial</a>
+                        <a class="link-secondary" href="">Justificar</a>
+                        <a class="link-success" href="">Pagar</a>
+                      </td>
+                      <td class="align-middle">
+                        <label style="margin-bottom: 0rem" for="radInfo{{ i }}">
+                          {{ getAlumnoEstado() }}
+                        </label>
+                      </td>
+                      <td class="align-middle">
+                        <label style="margin-bottom: 0rem" for="radInfo{{ i }}">
+                          {{ getAlumnoDni() }}
+                        </label>
+                      </td>
+                      <td class="align-middle">
+                        <label style="margin-bottom: 0rem" for="radInfo{{ i }}">
+                          {{ getAlumnoCodigo() }}
+                        </label>
+                      </td>
+                      <td class="align-middle">
+                        <label style="margin-bottom: 0rem" for="radInfo{{ i }}">
+                          {{ getAlumnoNombres() }} {{ getAlumnoApPaterno() }} {{ getAlumnoApMaterno() }}
+                        </label>
+                      </td>
+                      <td class="align-middle">
+                        <label style="margin-bottom: 0rem" for="radInfo{{ i }}"> {{ getAlumnoCurso() }} {{ getAlumnoAsignatura() }} </label>
+                      </td>
+                      <td class="align-middle">
+                        <label style="margin-bottom: 0rem" for="radInfo{{ i }}">
+                          {{ getTotalPrev() }}
+                        </label>
+                      </td>
+                      <td class="align-middle">
+                        <label style="margin-bottom: 0rem" for="radInfo{{ i }}">
+                          {{ getTotalPrev() }}
+                        </label>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

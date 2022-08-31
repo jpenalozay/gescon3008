@@ -1,0 +1,31 @@
+{
+  "gesconApp": {
+    "horarioCatalogo": {
+      "home": {
+        "title": "Horario Catalogos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Horario Catalogo",
+        "createOrEditLabel": "Crear o editar Horario Catalogo",
+        "notFound": "Ningún Horario Catalogos encontrado"
+      },
+      "created": "Un nuevo Horario Catalogo ha sido creado con el identificador {{ param }}",
+      "updated": "Un Horario Catalogo ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Horario Catalogo ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Horario Catalogo {{ id }}?"
+      },
+      "detail": {
+        "title": "Horario Catalogo"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "codigo": "Codigo",
+      "horaInicio": "Hora Inicio",
+      "horaFin": "Hora Fin",
+      "descripcion": "Descripcion",
+      "horario": "Horario",
+      "programacion": "Programacion",
+      "programacionDeshabilitaciones": "Programacion Deshabilitaciones"
+    }
+  }
+}

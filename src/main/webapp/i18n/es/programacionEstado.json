@@ -1,0 +1,10 @@
+{
+  "gesconApp": {
+    "ProgramacionEstado": {
+      "null": "",
+      "PROGRAMADO": "PROGRAMADO",
+      "DESHABILITADO": "DESHABILITADO",
+      "DESHABILITADO_ENPARTE": "DESHABILITADO_ENPARTE"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gesconApp": {
+    "configuracionFormCarac": {
+      "home": {
+        "title": "Configuracion Form Caracs",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Configuracion Form Carac",
+        "createOrEditLabel": "Crear o editar Configuracion Form Carac",
+        "notFound": "Ningún Configuracion Form Caracs encontrado"
+      },
+      "created": "Un nuevo Configuracion Form Carac ha sido creado con el identificador {{ param }}",
+      "updated": "Un Configuracion Form Carac ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Configuracion Form Carac ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Configuracion Form Carac {{ id }}?"
+      },
+      "detail": {
+        "title": "Configuracion Form Carac"
+      },
+      "id": "ID",
+      "estado": "Estado",
+      "modulo": "Modulo",
+      "formulario": "Formulario",
+      "formularioCaracteristica": "Formulario Caracteristica"
+    }
+  }
+}
